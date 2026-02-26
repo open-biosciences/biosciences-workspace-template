@@ -69,7 +69,10 @@ The graph/memory entries connect to local MCP servers that must be running on lo
   "mcpServers": {
     "biosciences-mcp": {
       "type": "http",
-      "url": "https://biosciences-mcp.fastmcp.app/mcp"
+      "url": "https://biosciences-mcp.fastmcp.app/mcp",
+      "headers": {
+        "Authorization": "Bearer ${BIOSCIENCES_API_KEY}"
+      }
     },
     "graphiti-aura": {
       "type": "stdio",

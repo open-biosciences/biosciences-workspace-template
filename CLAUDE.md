@@ -76,7 +76,7 @@ The graph/memory entries connect to local MCP servers that must be running on lo
     },
     "graphiti-aura": {
       "type": "stdio",
-      "command": "/home/donbr/graphiti-fastmcp/scripts/run_mcp_server.sh",
+      "command": "${GRAPHITI_FASTMCP_PATH}/scripts/run_mcp_server.sh",
       "args": []
     },
     "neo4j-aura-management": {
@@ -104,7 +104,7 @@ The graph/memory entries connect to local MCP servers that must be running on lo
 | Server | Transport | Endpoint | Purpose |
 |--------|-----------|----------|---------|
 | `biosciences-mcp` | HTTP (cloud) | `https://biosciences-mcp.fastmcp.app/mcp` | 40+ life sciences API tools (HGNC, UniProt, ChEMBL, Open Targets, STRING, etc.) |
-| `graphiti-aura` | stdio | `/home/donbr/graphiti-fastmcp/scripts/run_mcp_server.sh` | Graphiti FastMCP for Neo4j Aura (read-only — write-freeze in effect) |
+| `graphiti-aura` | stdio | `${GRAPHITI_FASTMCP_PATH}/scripts/run_mcp_server.sh` | Graphiti FastMCP for Neo4j Aura (read-only — write-freeze in effect) |
 | `neo4j-aura-management` | HTTP (local) | `:8004` | Neo4j Aura instance management |
 | `neo4j-aura-cypher` | HTTP (local) | `:8003` | Direct Cypher queries on Aura |
 | `graphiti-docker` | HTTP (local) | `:8002` | Graphiti FastMCP for local Docker Neo4j (primary write target) |
@@ -112,23 +112,24 @@ The graph/memory entries connect to local MCP servers that must be running on lo
 
 ### Current State: Duplication Audit
 
-As of 2026-02-26, **3 repos** have `.mcp.json` files with identical content:
+As of 2026-02-26 (updated post-Wave 3), **6 repos** have `.mcp.json` files:
 
-| File | Contains biosciences-mcp? |
+| Repo | Contains biosciences-mcp? |
 |------|--------------------------|
-| `/home/donbr/open-biosciences/.mcp.json` | No |
-| `/home/donbr/open-biosciences/biosciences-memory/.mcp.json` | No |
-| `/home/donbr/open-biosciences/biosciences-program/.mcp.json` | No |
+| workspace root (`open-biosciences/`) | Yes |
+| `biosciences-memory` | Yes |
+| `biosciences-program` | Yes |
+| `biosciences-deepagents` | Yes (added Wave 3) |
+| `biosciences-temporal` | Yes (added Wave 3) |
+| `biosciences-skills` | Yes (biosciences-mcp only, no local graph servers) |
 
-All three files are byte-for-byte identical (same 5 graph/memory servers, no `biosciences-mcp` entry).
-The remaining 8 repos (`biosciences-mcp`, `biosciences-research`, `biosciences-deepagents`,
-`biosciences-temporal`, `biosciences-architecture`, `biosciences-skills`, `biosciences-evaluation`,
-`biosciences-workspace-template`, `biosciences-education`) have no `.mcp.json` at all.
+Remaining repos without `.mcp.json`: `biosciences-mcp`, `biosciences-research`,
+`biosciences-architecture`, `biosciences-evaluation`, `biosciences-workspace-template`,
+`biosciences-education`.
 
-**Key gaps identified:**
-1. `biosciences-mcp` is not present in any `.mcp.json` — agents cannot reach the FastMCP Cloud gateway
-2. Identical file content across 3 repos creates a maintenance burden — any change requires 3 manual edits
-3. 8 repos lack MCP access entirely, including `biosciences-deepagents` and `biosciences-temporal` which depend on MCP tools
+**Key remaining gap:**
+Identical file content across 5 of 6 repos creates a maintenance burden — any change requires
+5 manual edits. The `bootstrap.sh` distribution pattern will resolve this in Wave 4.
 
 ### Bootstrap Script Pattern
 
@@ -182,7 +183,7 @@ When running Claude Code in multi-agent workspace mode:
 - The `biosciences-mcp` HTTP transport is **stateless** — safe for concurrent access by multiple agents
 - The local graph servers (`graphiti-docker`, `neo4j-docker-cypher`, etc.) are also stateless HTTP — safe for concurrent reads; write ordering is handled by the Graphiti queue service
 - Authentication API keys must be set as **environment variables**, never embedded in `.mcp.json`
-- The workspace-root `.mcp.json` (`/home/donbr/open-biosciences/.mcp.json`) applies when Claude Code is opened at the workspace level rather than in a specific repo
+- The workspace-root `.mcp.json` (in `open-biosciences/`) applies when Claude Code is opened at the workspace level rather than in a specific repo
 
 ### Aura Write-Freeze Note
 

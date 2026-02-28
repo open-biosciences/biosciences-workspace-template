@@ -1,0 +1,198 @@
+{
+  "metadata": {
+    "query": "Identify the specific glycolipid substrate that accumulates in Fabry Disease, and name the cellular organelle where this pathological accumulation primarily takes place due to the absence of functional alpha-galactosidase A.",
+    "protocol": "Fuzzy-to-Fact Graph Builder",
+    "generated": "2026-02-27",
+    "graphiti_group_id": "open-biosciences",
+    "answer": {
+      "substrate": "Globotriaosylceramide (Gb3/GL-3)",
+      "organelle": "Lysosome",
+      "mechanism": "GLA deficiency prevents hydrolysis of terminal alpha-D-galactose from Gb3, causing progressive lysosomal storage"
+    }
+  },
+  "nodes": [
+    {
+      "id": "HGNC:4296",
+      "type": "Gene",
+      "symbol": "GLA",
+      "name": "galactosidase alpha",
+      "locus": "Xq22.1",
+      "entrez_id": "2717",
+      "ensembl_id": "ENSG00000102393",
+      "omim": "300644",
+      "ec": "3.2.1.22"
+    },
+    {
+      "id": "UniProtKB:P06280",
+      "type": "Protein",
+      "name": "Alpha-galactosidase A",
+      "length": 429,
+      "subcellular_location": "Lysosome",
+      "function": "Catalyzes the hydrolysis of glycosphingolipids and participates in their degradation in the lysosome"
+    },
+    {
+      "id": "CHEBI:18313",
+      "type": "Substrate",
+      "name": "Globotriaosylceramide",
+      "aliases": ["Gb3", "Gb3Cer", "GL-3", "ceramide trihexoside", "CTH"],
+      "pubchem_cid": 66616222,
+      "molecular_weight": "827.9",
+      "molecular_formula": "C38H69NO18",
+      "role": "Accumulating substrate in Fabry disease"
+    },
+    {
+      "id": "CHEBI:17950",
+      "type": "Metabolite",
+      "name": "D-galactose",
+      "role": "Product cleaved by GLA from Gb3"
+    },
+    {
+      "id": "CHEBI:4139",
+      "type": "Metabolite",
+      "name": "Lactosylceramide",
+      "aliases": ["LacCer"],
+      "role": "Product of Gb3 hydrolysis by GLA"
+    },
+    {
+      "id": "GO:0005764",
+      "type": "Organelle",
+      "name": "Lysosome",
+      "role": "Site of Gb3 accumulation in Fabry disease"
+    },
+    {
+      "id": "MONDO:0010526",
+      "type": "Disease",
+      "name": "Fabry disease",
+      "aliases": ["Anderson-Fabry disease"],
+      "inheritance": "X-linked",
+      "open_targets_score": 0.8935
+    },
+    {
+      "id": "CHEMBL:2107355",
+      "type": "Compound",
+      "name": "Migalastat hydrochloride",
+      "trade_name": "Galafold",
+      "max_phase": 4,
+      "first_approval": 2016,
+      "molecule_type": "Small molecule",
+      "mechanism": "Alpha-galactosidase A stabiliser (pharmacological chaperone)",
+      "oral": true
+    },
+    {
+      "id": "CHEMBL:2108888",
+      "type": "Compound",
+      "name": "Agalsidase beta",
+      "trade_name": "Fabrazyme",
+      "max_phase": 4,
+      "first_approval": 2001,
+      "molecule_type": "Enzyme",
+      "mechanism": "Enzyme replacement therapy"
+    },
+    {
+      "id": "CHEMBL:2108214",
+      "type": "Compound",
+      "name": "Agalsidase alfa",
+      "trade_name": "Replagal",
+      "max_phase": 4,
+      "first_approval": 2001,
+      "molecule_type": "Enzyme",
+      "mechanism": "Enzyme replacement therapy"
+    },
+    {
+      "id": "CHEMBL:2524",
+      "type": "Target",
+      "name": "Alpha-galactosidase A",
+      "target_type": "SINGLE PROTEIN"
+    }
+  ],
+  "edges": [
+    {
+      "source": "HGNC:4296",
+      "target": "UniProtKB:P06280",
+      "type": "ENCODES"
+    },
+    {
+      "source": "UniProtKB:P06280",
+      "target": "CHEBI:18313",
+      "type": "HYDROLYZES",
+      "reaction": "Gb3Cer + H2O -> LacCer + D-galactose",
+      "ec": "3.2.1.22",
+      "rhea": "RHEA:21112"
+    },
+    {
+      "source": "UniProtKB:P06280",
+      "target": "CHEBI:4139",
+      "type": "PRODUCES",
+      "context": "Product of Gb3 hydrolysis"
+    },
+    {
+      "source": "UniProtKB:P06280",
+      "target": "CHEBI:17950",
+      "type": "PRODUCES",
+      "context": "Product of Gb3 hydrolysis"
+    },
+    {
+      "source": "CHEBI:18313",
+      "target": "GO:0005764",
+      "type": "ACCUMULATES_IN",
+      "condition": "When GLA is deficient or absent"
+    },
+    {
+      "source": "HGNC:4296",
+      "target": "MONDO:0010526",
+      "type": "ASSOCIATED_WITH",
+      "mechanism": "Loss-of-function variants cause Gb3 lysosomal accumulation",
+      "open_targets_score": 0.8935
+    },
+    {
+      "source": "CHEMBL:2107355",
+      "target": "CHEMBL:2524",
+      "type": "STABILISER",
+      "mechanism": "Pharmacological chaperone"
+    },
+    {
+      "source": "CHEMBL:2108888",
+      "target": "CHEMBL:2524",
+      "type": "ENZYME_REPLACEMENT"
+    },
+    {
+      "source": "CHEMBL:2108214",
+      "target": "CHEMBL:2524",
+      "type": "ENZYME_REPLACEMENT"
+    },
+    {
+      "source": "CHEMBL:2107355",
+      "target": "MONDO:0010526",
+      "type": "TREATS",
+      "max_phase": 4
+    },
+    {
+      "source": "CHEMBL:2108888",
+      "target": "MONDO:0010526",
+      "type": "TREATS",
+      "max_phase": 4
+    },
+    {
+      "source": "CHEMBL:2108214",
+      "target": "MONDO:0010526",
+      "type": "TREATS",
+      "max_phase": 4
+    }
+  ],
+  "string_interactors": [
+    {"gene": "GLB1", "score": 0.984, "note": "Beta-galactosidase (GM1 gangliosidosis)"},
+    {"gene": "GALC", "score": 0.976, "note": "Galactosylceramidase (Krabbe disease)"},
+    {"gene": "ARSA", "score": 0.974, "note": "Arylsulfatase A (MLD)"},
+    {"gene": "A4GALT", "score": 0.949, "note": "Gb3 synthase — synthesizes Gb3 from LacCer"},
+    {"gene": "GAA", "score": 0.943, "note": "Acid alpha-glucosidase (Pompe disease)"},
+    {"gene": "HEXB", "score": 0.941, "note": "Hexosaminidase B (Sandhoff disease)"},
+    {"gene": "HEXA", "score": 0.939, "note": "Hexosaminidase A (Tay-Sachs disease)"}
+  ],
+  "pathways": [
+    {"id": "WP4153", "name": "Degradation pathway of sphingolipids, including diseases", "source": "WikiPathways"},
+    {"id": "WP2788", "name": "Sphingolipid metabolism", "source": "WikiPathways"},
+    {"id": "WP5292", "name": "Glycosphingolipid metabolism", "source": "WikiPathways"},
+    {"id": "R-HSA-9840310", "name": "Glycosphingolipid catabolism", "source": "Reactome"},
+    {"id": "R-HSA-6798695", "name": "Neutrophil degranulation", "source": "Reactome"}
+  ]
+}

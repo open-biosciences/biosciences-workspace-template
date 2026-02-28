@@ -1,0 +1,589 @@
+{
+  "query": "Identify the specific glycolipid substrate that accumulates in Fabry Disease, and name the cellular organelle where this pathological accumulation primarily takes place due to the absence of functional alpha-galactosidase A.",
+  "disease": {
+    "id": "MONDO:0010526",
+    "name": "Fabry disease",
+    "aliases": ["Anderson-Fabry disease"],
+    "inheritance": "X-linked",
+    "classification": "Lysosomal storage disorder (sphingolipidosis)"
+  },
+  "answer": {
+    "substrate": "Globotriaosylceramide (Gb3/GL-3)",
+    "organelle": "Lysosome",
+    "mechanism": "GLA deficiency prevents hydrolysis of terminal alpha-D-galactose from Gb3, causing progressive lysosomal storage"
+  },
+  "nodes": [
+    {
+      "id": "HGNC:4296",
+      "type": "Gene",
+      "symbol": "GLA",
+      "name": "galactosidase alpha",
+      "locus": "Xq22.1",
+      "entrez_id": "2717",
+      "ensembl_id": "ENSG00000102393",
+      "omim": "300644",
+      "ec": "3.2.1.22",
+      "synapse_grounding": [
+        {
+          "source": "HGNC",
+          "endpoint": "rest.genenames.org/fetch/symbol/GLA",
+          "identifier": "HGNC:4296",
+          "evidence_level": "L2",
+          "score": 0.65
+        }
+      ]
+    },
+    {
+      "id": "UniProtKB:P06280",
+      "type": "Protein",
+      "name": "Alpha-galactosidase A",
+      "length": 429,
+      "subcellular_location": "Lysosome",
+      "function": "Catalyzes the hydrolysis of glycosphingolipids and participates in their degradation in the lysosome",
+      "synapse_grounding": [
+        {
+          "source": "UniProt",
+          "endpoint": "rest.uniprot.org/uniprotkb/P06280.json",
+          "identifier": "P06280",
+          "evidence_level": "L2",
+          "score": 0.65
+        }
+      ]
+    },
+    {
+      "id": "CHEBI:18313",
+      "type": "Substrate",
+      "name": "Globotriaosylceramide",
+      "aliases": ["Gb3", "Gb3Cer", "GL-3", "ceramide trihexoside", "CTH"],
+      "pubchem_cid": 66616222,
+      "molecular_weight": "827.9",
+      "molecular_formula": "C38H69NO18",
+      "role": "Accumulating substrate in Fabry disease",
+      "synapse_grounding": [
+        {
+          "source": "PubChem",
+          "endpoint": "pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/globotriaosylceramide",
+          "identifier": "CID 66616222",
+          "evidence_level": "L2",
+          "score": 0.60
+        }
+      ]
+    },
+    {
+      "id": "CHEBI:17950",
+      "type": "Metabolite",
+      "name": "D-galactose",
+      "role": "Product cleaved by GLA from Gb3",
+      "synapse_grounding": [
+        {
+          "source": "UniProt",
+          "endpoint": "rest.uniprot.org/uniprotkb/P06280.json",
+          "identifier": "CHEBI:17950",
+          "evidence_level": "L2",
+          "score": 0.60
+        }
+      ]
+    },
+    {
+      "id": "CHEBI:4139",
+      "type": "Metabolite",
+      "name": "Lactosylceramide",
+      "aliases": ["LacCer"],
+      "role": "Product of Gb3 hydrolysis by GLA",
+      "synapse_grounding": [
+        {
+          "source": "UniProt",
+          "endpoint": "rest.uniprot.org/uniprotkb/P06280.json",
+          "identifier": "CHEBI:4139",
+          "evidence_level": "L2",
+          "score": 0.60
+        }
+      ]
+    },
+    {
+      "id": "GO:0005764",
+      "type": "Organelle",
+      "name": "Lysosome",
+      "role": "Site of Gb3 accumulation in Fabry disease",
+      "synapse_grounding": [
+        {
+          "source": "UniProt",
+          "endpoint": "rest.uniprot.org/uniprotkb/P06280.json",
+          "identifier": "GO:0005764",
+          "evidence_level": "L2",
+          "score": 0.60
+        }
+      ]
+    },
+    {
+      "id": "MONDO:0010526",
+      "type": "Disease",
+      "name": "Fabry disease",
+      "aliases": ["Anderson-Fabry disease"],
+      "inheritance": "X-linked",
+      "open_targets_score": 0.8935,
+      "synapse_grounding": [
+        {
+          "source": "Open Targets",
+          "endpoint": "api.platform.opentargets.org/api/v4/graphql",
+          "identifier": "ENSG00000102393",
+          "evidence_level": "L3",
+          "score": 0.85
+        }
+      ]
+    },
+    {
+      "id": "CHEMBL:2107355",
+      "type": "Compound",
+      "name": "Migalastat hydrochloride",
+      "trade_name": "Galafold",
+      "max_phase": 4,
+      "first_approval": 2016,
+      "molecule_type": "Small molecule",
+      "mechanism": "Alpha-galactosidase A stabiliser (pharmacological chaperone)",
+      "oral": true,
+      "synapse_grounding": [
+        {
+          "source": "ChEMBL",
+          "endpoint": "ebi.ac.uk/chembl/api/data/drug_indication",
+          "identifier": "CHEMBL2107355",
+          "evidence_level": "L4",
+          "score": 0.95
+        }
+      ]
+    },
+    {
+      "id": "CHEMBL:2108888",
+      "type": "Compound",
+      "name": "Agalsidase beta",
+      "trade_name": "Fabrazyme",
+      "max_phase": 4,
+      "first_approval": 2001,
+      "molecule_type": "Enzyme",
+      "mechanism": "Enzyme replacement therapy",
+      "synapse_grounding": [
+        {
+          "source": "ChEMBL",
+          "endpoint": "ebi.ac.uk/chembl/api/data/mechanism",
+          "identifier": "CHEMBL2524",
+          "evidence_level": "L4",
+          "score": 0.95
+        }
+      ]
+    },
+    {
+      "id": "CHEMBL:2108214",
+      "type": "Compound",
+      "name": "Agalsidase alfa",
+      "trade_name": "Replagal",
+      "max_phase": 4,
+      "first_approval": 2001,
+      "molecule_type": "Enzyme",
+      "mechanism": "Enzyme replacement therapy",
+      "synapse_grounding": [
+        {
+          "source": "ChEMBL",
+          "endpoint": "ebi.ac.uk/chembl/api/data/mechanism",
+          "identifier": "CHEMBL2524",
+          "evidence_level": "L4",
+          "score": 0.95
+        }
+      ]
+    },
+    {
+      "id": "CHEMBL:2524",
+      "type": "Target",
+      "name": "Alpha-galactosidase A",
+      "target_type": "SINGLE PROTEIN",
+      "synapse_grounding": [
+        {
+          "source": "ChEMBL",
+          "endpoint": "ebi.ac.uk/chembl/api/data/mechanism",
+          "identifier": "CHEMBL2524",
+          "evidence_level": "L3",
+          "score": 0.70
+        }
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "source": "HGNC:4296",
+      "target": "UniProtKB:P06280",
+      "type": "ENCODES",
+      "synapse_grounding": [
+        {
+          "source": "HGNC",
+          "endpoint": "rest.genenames.org/fetch/symbol/GLA",
+          "evidence_level": "L2",
+          "score": 0.65
+        },
+        {
+          "source": "UniProt",
+          "endpoint": "rest.uniprot.org/uniprotkb/P06280.json",
+          "evidence_level": "L2",
+          "score": 0.65
+        }
+      ]
+    },
+    {
+      "source": "UniProtKB:P06280",
+      "target": "CHEBI:18313",
+      "type": "HYDROLYZES",
+      "reaction": "Gb3Cer + H2O -> LacCer + D-galactose",
+      "ec": "3.2.1.22",
+      "rhea": "RHEA:21112",
+      "synapse_grounding": [
+        {
+          "source": "UniProt",
+          "endpoint": "rest.uniprot.org/uniprotkb/P06280.json",
+          "evidence_level": "L3",
+          "score": 0.80
+        }
+      ]
+    },
+    {
+      "source": "UniProtKB:P06280",
+      "target": "CHEBI:4139",
+      "type": "PRODUCES",
+      "context": "Product of Gb3 hydrolysis",
+      "synapse_grounding": [
+        {
+          "source": "UniProt",
+          "endpoint": "rest.uniprot.org/uniprotkb/P06280.json",
+          "evidence_level": "L2",
+          "score": 0.60
+        }
+      ]
+    },
+    {
+      "source": "UniProtKB:P06280",
+      "target": "CHEBI:17950",
+      "type": "PRODUCES",
+      "context": "Product of Gb3 hydrolysis",
+      "synapse_grounding": [
+        {
+          "source": "UniProt",
+          "endpoint": "rest.uniprot.org/uniprotkb/P06280.json",
+          "evidence_level": "L2",
+          "score": 0.60
+        }
+      ]
+    },
+    {
+      "source": "CHEBI:18313",
+      "target": "GO:0005764",
+      "type": "ACCUMULATES_IN",
+      "condition": "When GLA is deficient or absent",
+      "synapse_grounding": [
+        {
+          "source": "UniProt",
+          "endpoint": "rest.uniprot.org/uniprotkb/P06280.json",
+          "evidence_level": "L3",
+          "score": 0.80
+        },
+        {
+          "source": "PubChem",
+          "endpoint": "pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/globotriaosylceramide",
+          "evidence_level": "L2",
+          "score": 0.60
+        }
+      ]
+    },
+    {
+      "source": "HGNC:4296",
+      "target": "MONDO:0010526",
+      "type": "ASSOCIATED_WITH",
+      "mechanism": "Loss-of-function variants cause Gb3 lysosomal accumulation",
+      "open_targets_score": 0.8935,
+      "synapse_grounding": [
+        {
+          "source": "Open Targets",
+          "endpoint": "api.platform.opentargets.org/api/v4/graphql",
+          "identifier": "ENSG00000102393",
+          "evidence_level": "L3",
+          "score": 0.85
+        }
+      ]
+    },
+    {
+      "source": "CHEMBL:2107355",
+      "target": "CHEMBL:2524",
+      "type": "STABILISER",
+      "mechanism": "Pharmacological chaperone",
+      "synapse_grounding": [
+        {
+          "source": "ChEMBL",
+          "endpoint": "ebi.ac.uk/chembl/api/data/mechanism",
+          "identifier": "CHEMBL2524",
+          "evidence_level": "L4",
+          "score": 0.95
+        }
+      ]
+    },
+    {
+      "source": "CHEMBL:2108888",
+      "target": "CHEMBL:2524",
+      "type": "ENZYME_REPLACEMENT",
+      "synapse_grounding": [
+        {
+          "source": "ChEMBL",
+          "endpoint": "ebi.ac.uk/chembl/api/data/mechanism",
+          "identifier": "CHEMBL2524",
+          "evidence_level": "L4",
+          "score": 0.95
+        }
+      ]
+    },
+    {
+      "source": "CHEMBL:2108214",
+      "target": "CHEMBL:2524",
+      "type": "ENZYME_REPLACEMENT",
+      "synapse_grounding": [
+        {
+          "source": "ChEMBL",
+          "endpoint": "ebi.ac.uk/chembl/api/data/mechanism",
+          "identifier": "CHEMBL2524",
+          "evidence_level": "L4",
+          "score": 0.95
+        }
+      ]
+    },
+    {
+      "source": "CHEMBL:2107355",
+      "target": "MONDO:0010526",
+      "type": "TREATS",
+      "max_phase": 4,
+      "synapse_grounding": [
+        {
+          "source": "ChEMBL",
+          "endpoint": "ebi.ac.uk/chembl/api/data/drug_indication",
+          "identifier": "CHEMBL2107355",
+          "evidence_level": "L4",
+          "score": 0.95
+        }
+      ]
+    },
+    {
+      "source": "CHEMBL:2108888",
+      "target": "MONDO:0010526",
+      "type": "TREATS",
+      "max_phase": 4,
+      "synapse_grounding": [
+        {
+          "source": "ChEMBL",
+          "endpoint": "ebi.ac.uk/chembl/api/data/drug_indication",
+          "identifier": "CHEMBL2108888",
+          "evidence_level": "L4",
+          "score": 0.95
+        }
+      ]
+    },
+    {
+      "source": "CHEMBL:2108214",
+      "target": "MONDO:0010526",
+      "type": "TREATS",
+      "max_phase": 4,
+      "synapse_grounding": [
+        {
+          "source": "ChEMBL",
+          "endpoint": "ebi.ac.uk/chembl/api/data/drug_indication",
+          "identifier": "CHEMBL2108214",
+          "evidence_level": "L4",
+          "score": 0.95
+        }
+      ]
+    }
+  ],
+  "string_interactors": [
+    {
+      "gene": "GLB1",
+      "score": 0.984,
+      "note": "Beta-galactosidase (GM1 gangliosidosis)",
+      "synapse_grounding": [
+        {
+          "source": "STRING",
+          "endpoint": "string-db.org/api/json/interaction_partners",
+          "identifier": "ENSP00000218516",
+          "evidence_level": "L2",
+          "score": 0.55
+        }
+      ]
+    },
+    {
+      "gene": "GALC",
+      "score": 0.976,
+      "note": "Galactosylceramidase (Krabbe disease)",
+      "synapse_grounding": [
+        {
+          "source": "STRING",
+          "endpoint": "string-db.org/api/json/interaction_partners",
+          "identifier": "ENSP00000218516",
+          "evidence_level": "L2",
+          "score": 0.55
+        }
+      ]
+    },
+    {
+      "gene": "ARSA",
+      "score": 0.974,
+      "note": "Arylsulfatase A (MLD)",
+      "synapse_grounding": [
+        {
+          "source": "STRING",
+          "endpoint": "string-db.org/api/json/interaction_partners",
+          "identifier": "ENSP00000218516",
+          "evidence_level": "L2",
+          "score": 0.55
+        }
+      ]
+    },
+    {
+      "gene": "A4GALT",
+      "score": 0.949,
+      "note": "Gb3 synthase -- synthesizes Gb3 from LacCer",
+      "synapse_grounding": [
+        {
+          "source": "STRING",
+          "endpoint": "string-db.org/api/json/interaction_partners",
+          "identifier": "ENSP00000218516",
+          "evidence_level": "L1",
+          "score": 0.44
+        }
+      ]
+    },
+    {
+      "gene": "GAA",
+      "score": 0.943,
+      "note": "Acid alpha-glucosidase (Pompe disease)",
+      "synapse_grounding": [
+        {
+          "source": "STRING",
+          "endpoint": "string-db.org/api/json/interaction_partners",
+          "identifier": "ENSP00000218516",
+          "evidence_level": "L2",
+          "score": 0.55
+        }
+      ]
+    },
+    {
+      "gene": "HEXB",
+      "score": 0.941,
+      "note": "Hexosaminidase B (Sandhoff disease)",
+      "synapse_grounding": [
+        {
+          "source": "STRING",
+          "endpoint": "string-db.org/api/json/interaction_partners",
+          "identifier": "ENSP00000218516",
+          "evidence_level": "L2",
+          "score": 0.55
+        }
+      ]
+    },
+    {
+      "gene": "HEXA",
+      "score": 0.939,
+      "note": "Hexosaminidase A (Tay-Sachs disease)",
+      "synapse_grounding": [
+        {
+          "source": "STRING",
+          "endpoint": "string-db.org/api/json/interaction_partners",
+          "identifier": "ENSP00000218516",
+          "evidence_level": "L2",
+          "score": 0.55
+        }
+      ]
+    }
+  ],
+  "pathways": [
+    {
+      "id": "WP4153",
+      "name": "Degradation pathway of sphingolipids, including diseases",
+      "source": "WikiPathways",
+      "synapse_grounding": [
+        {
+          "source": "WikiPathways",
+          "endpoint": "webservice.wikipathways.org/findPathwaysByXref",
+          "identifier": "Entrez:2717",
+          "evidence_level": "L1",
+          "score": 0.40
+        }
+      ]
+    },
+    {
+      "id": "WP2788",
+      "name": "Sphingolipid metabolism",
+      "source": "WikiPathways",
+      "synapse_grounding": [
+        {
+          "source": "WikiPathways",
+          "endpoint": "webservice.wikipathways.org/findPathwaysByXref",
+          "identifier": "Entrez:2717",
+          "evidence_level": "L1",
+          "score": 0.40
+        }
+      ]
+    },
+    {
+      "id": "WP5292",
+      "name": "Glycosphingolipid metabolism",
+      "source": "WikiPathways",
+      "synapse_grounding": [
+        {
+          "source": "WikiPathways",
+          "endpoint": "webservice.wikipathways.org/findPathwaysByXref",
+          "identifier": "Entrez:2717",
+          "evidence_level": "L1",
+          "score": 0.40
+        }
+      ]
+    },
+    {
+      "id": "R-HSA-9840310",
+      "name": "Glycosphingolipid catabolism",
+      "source": "Reactome",
+      "synapse_grounding": []
+    },
+    {
+      "id": "R-HSA-6798695",
+      "name": "Neutrophil degranulation",
+      "source": "Reactome",
+      "synapse_grounding": []
+    }
+  ],
+  "metadata": {
+    "protocol": "Fuzzy-to-Fact Graph Builder",
+    "template": "Template 6: Mechanism Elucidation",
+    "generated": "2026-02-28",
+    "source_report": "report.md",
+    "source_graph": "graph.json",
+    "graphiti_group_id": "open-biosciences",
+    "evidence_summary": {
+      "total_claims": 11,
+      "median_score": 0.80,
+      "score_range": [0.44, 0.95],
+      "overall_level": "L3 Functional",
+      "distribution": {
+        "L4_clinical": 3,
+        "L3_functional": 3,
+        "L2_multi_db": 4,
+        "L1_single_db": 1,
+        "insufficient": 0
+      }
+    },
+    "data_sources": [
+      "HGNC",
+      "UniProt",
+      "ChEBI",
+      "PubChem",
+      "Open Targets",
+      "STRING",
+      "ChEMBL",
+      "WikiPathways",
+      "Reactome",
+      "ClinicalTrials.gov"
+    ],
+    "node_count": 11,
+    "edge_count": 12
+  }
+}

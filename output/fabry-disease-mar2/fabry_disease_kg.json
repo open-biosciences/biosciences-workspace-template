@@ -1,0 +1,383 @@
+{
+  "knowledge_graph": {
+    "metadata": {
+      "competency_question": "Identify the specific glycolipid substrate that accumulates in Fabry Disease, and name the cellular organelle where this pathological accumulation primarily takes place due to the absence of functional alpha-galactosidase A",
+      "protocol": "Fuzzy-to-Fact v1.0",
+      "phases_completed": ["ANCHOR", "ENRICH", "EXPAND", "TRAVERSE_DRUGS", "TRAVERSE_TRIALS", "VALIDATE", "PERSIST"],
+      "generated_at": "2026-03-02T00:00:00Z",
+      "answer_summary": "The specific glycolipid substrate is globotriaosylceramide (Gb3, also known as GL-3 or ceramide trihexoside). It accumulates primarily in the LYSOSOME (lysosomal lumen) due to deficiency of alpha-galactosidase A (GLA enzyme, EC 3.2.1.22).",
+      "entity_counts": {
+        "genes": 3,
+        "diseases": 1,
+        "drugs": 7,
+        "trials": 14,
+        "pathways": 2
+      },
+      "validation_summary": {
+        "VALIDATED": 12,
+        "INVALID": 0,
+        "UNVERIFIABLE": 0
+      }
+    },
+    "nodes": {
+      "genes": [
+        {
+          "symbol": "GLA",
+          "name": "galactosidase alpha",
+          "ensembl": "ENSG00000102393",
+          "uniprot": "P06280",
+          "hgnc": "HGNC:4296",
+          "chembl_target": "CHEMBL2524",
+          "location": "Xq22.1",
+          "genomic_coordinates": {
+            "chromosome": "X",
+            "start": 101393273,
+            "end": 101408012,
+            "strand": -1
+          },
+          "function": "Catalyzes the hydrolysis of glycosphingolipids and participates in their degradation in the lysosome.",
+          "subcellular_locations": [
+            "Lysosome (GO:0005764)",
+            "Lysosomal lumen (GO:0043202)",
+            "Golgi apparatus (GO:0005794)",
+            "Extracellular exosome (GO:0070062)",
+            "Azurophil granule lumen (GO:0035578)"
+          ],
+          "go_processes": [
+            "Glycosphingolipid catabolic process (GO:0046479)",
+            "Glycosylceramide catabolic process (GO:0046477)",
+            "Lipid metabolic process (GO:0006629)",
+            "Carbohydrate metabolic process (GO:0005975)"
+          ],
+          "pdb_structures": ["1R46", "1R47", "3GXN", "3GXP", "3GXT", "3HG2", "3HG3", "3HG4", "3HG5", "3S5Y", "3S5Z", "3TV8", "4NXS", "6IBK", "6IBM", "6IBR", "6IBT"],
+          "role": "primary_target"
+        },
+        {
+          "symbol": "UGCG",
+          "name": "UDP-glucose ceramide glucosyltransferase",
+          "ensembl": "ENSG00000148154",
+          "role": "therapeutic_target",
+          "note": "Target of substrate reduction therapy (lucerastat, venglustat). Inhibiting UGCG reduces glycosphingolipid biosynthesis upstream, decreasing Gb3 accumulation."
+        },
+        {
+          "symbol": "SLC5A2",
+          "name": "solute carrier family 5 member 2",
+          "ensembl": "ENSG00000140675",
+          "role": "exploratory_target",
+          "note": "Target of dapagliflozin (SGLT2 inhibitor) being explored for renal protection in Fabry Disease."
+        }
+      ],
+      "substrates": [
+        {
+          "name": "Globotriaosylceramide",
+          "aliases": ["Gb3", "GL-3", "ceramide trihexoside", "CTH"],
+          "type": "glycosphingolipid",
+          "chemical_class": "glycolipid",
+          "structure_description": "A glycosphingolipid with the structure Gal-alpha-1,4-Gal-beta-1,4-Glc-beta-1,1-ceramide",
+          "accumulation_site": "lysosome",
+          "role": "The primary substrate that accumulates in Fabry Disease due to GLA deficiency",
+          "biomarker_derivative": {
+            "name": "Globotriaosylsphingosine",
+            "aliases": ["lyso-Gb3", "lyso-GL-3"],
+            "note": "Deacylated form of Gb3; used as plasma biomarker for disease monitoring"
+          }
+        }
+      ],
+      "organelles": [
+        {
+          "name": "Lysosome",
+          "go_id": "GO:0005764",
+          "uniprot_sl": "SL-0158",
+          "role": "Primary site of Gb3 accumulation in Fabry Disease. Alpha-galactosidase A normally resides in the lysosomal lumen where it catalyzes Gb3 hydrolysis.",
+          "validation": "VALIDATED",
+          "sources": [
+            "Open Targets (subcellularLocations: Lysosome, SL-0158)",
+            "ChEMBL GO:0005764 (lysosome), GO:0043202 (lysosomal lumen)",
+            "UniProt P06280 function annotation",
+            "Open Targets disease description: 'multisystemic lysosomal storage disease'"
+          ]
+        }
+      ],
+      "diseases": [
+        {
+          "name": "Fabry disease",
+          "id": "MONDO_0010526",
+          "aliases": ["Anderson-Fabry disease", "alpha-galactosidase A deficiency", "angiokeratoma corporis diffusum", "ceramide trihexosidase deficiency"],
+          "description": "A progressive, inherited, multisystemic lysosomal storage disease characterized by specific neurological, cutaneous, renal, cardiovascular, cochleo-vestibular and cerebrovascular manifestations.",
+          "therapeutic_areas": ["Nutritional or metabolic disease", "Genetic, familial or congenital disease"],
+          "inheritance": "X-linked",
+          "association_score": 0.893,
+          "datasource_scores": {
+            "uniprot_variants": 0.997,
+            "genomics_england": 0.980,
+            "eva": 0.949,
+            "chembl": 0.926,
+            "orphanet": 0.608,
+            "gene2phenotype": 0.608,
+            "clingen": 0.608,
+            "europepmc": 0.611
+          }
+        }
+      ],
+      "drugs": [
+        {
+          "name": "Agalsidase alfa",
+          "chembl_id": "CHEMBL2108214",
+          "type": "Enzyme (recombinant)",
+          "brand_name": "Replagal",
+          "max_phase": 4,
+          "first_approval": 2001,
+          "mechanism": "Globotriosylceramide hydrolytic enzyme",
+          "action_type": "HYDROLYTIC ENZYME",
+          "target": "GLA",
+          "therapeutic_class": "Enzyme Replacement Therapy (ERT)",
+          "atc": "A16AB03",
+          "validation": "VALIDATED"
+        },
+        {
+          "name": "Agalsidase beta",
+          "chembl_id": "CHEMBL2108888",
+          "type": "Enzyme (recombinant)",
+          "brand_name": "Fabrazyme",
+          "max_phase": 4,
+          "first_approval": 2001,
+          "mechanism": "Globotriosylceramide hydrolytic enzyme",
+          "action_type": "HYDROLYTIC ENZYME",
+          "target": "GLA",
+          "therapeutic_class": "Enzyme Replacement Therapy (ERT)",
+          "atc": "A16AB04",
+          "black_box_warning": true,
+          "validation": "VALIDATED"
+        },
+        {
+          "name": "Migalastat",
+          "chembl_id": "CHEMBL110458",
+          "type": "Small molecule",
+          "brand_name": "Galafold",
+          "max_phase": 4,
+          "first_approval": 2016,
+          "mechanism": "Alpha-galactosidase A stabiliser",
+          "action_type": "STABILISER",
+          "target": "GLA (CHEMBL2524)",
+          "binding_site": "Active site",
+          "therapeutic_class": "Pharmacological Chaperone",
+          "mechanism_comment": "Migalastat binds to the active site of alpha-galactosidase A, stabilising the protein enabling trafficking to the lysosome and enzyme activity.",
+          "first_in_class": true,
+          "orphan": true,
+          "oral": true,
+          "molecular_weight": 163.17,
+          "validation": "VALIDATED"
+        },
+        {
+          "name": "Lucerastat",
+          "chembl_id": "CHEMBL1086997",
+          "type": "Small molecule",
+          "max_phase": 3,
+          "mechanism": "Ceramide glucosyltransferase inhibitor",
+          "action_type": "INHIBITOR",
+          "target": "UGCG (ENSG00000148154)",
+          "therapeutic_class": "Substrate Reduction Therapy (SRT)",
+          "sponsor": "Idorsia Pharmaceuticals",
+          "validation": "VALIDATED"
+        },
+        {
+          "name": "Venglustat",
+          "chembl_id": "CHEMBL4297611",
+          "type": "Small molecule",
+          "max_phase": 3,
+          "mechanism": "Ceramide glucosyltransferase inhibitor",
+          "action_type": "INHIBITOR",
+          "target": "UGCG (ENSG00000148154)",
+          "therapeutic_class": "Substrate Reduction Therapy (SRT)",
+          "sponsor": "Sanofi",
+          "oral": true,
+          "molecular_weight": 389.5,
+          "validation": "VALIDATED"
+        },
+        {
+          "name": "Pegunigalsidase alfa",
+          "brand_name": "PRX-102",
+          "type": "Enzyme (PEGylated)",
+          "max_phase": 3,
+          "therapeutic_class": "Next-generation ERT",
+          "sponsor": "Chiesi Farmaceutici",
+          "validation": "VALIDATED"
+        },
+        {
+          "name": "4D-310",
+          "type": "Gene Therapy (AAV)",
+          "max_phase": 2,
+          "therapeutic_class": "Gene Therapy",
+          "sponsor": "4D Molecular Therapeutics",
+          "validation": "VALIDATED"
+        }
+      ],
+      "pathways": [
+        {
+          "name": "Glycosphingolipid catabolism",
+          "id": "R-HSA-9840310",
+          "source": "Reactome",
+          "relevance": "Direct pathway disrupted in Fabry Disease — GLA catalyzes a key step in this catabolic pathway"
+        },
+        {
+          "name": "Neutrophil degranulation",
+          "id": "R-HSA-6798695",
+          "source": "Reactome",
+          "relevance": "GLA protein found in azurophil granule lumen; may explain inflammatory aspects of Fabry Disease"
+        }
+      ]
+    },
+    "edges": [
+      {
+        "source": "GLA",
+        "target": "Fabry disease",
+        "type": "causes_when_deficient",
+        "score": 0.893,
+        "validation": "VALIDATED",
+        "evidence_sources": ["uniprot_variants", "genomics_england", "eva", "chembl", "orphanet", "clingen"]
+      },
+      {
+        "source": "GLA",
+        "target": "Globotriaosylceramide",
+        "type": "hydrolyzes",
+        "validation": "VALIDATED",
+        "evidence": "GLA cleaves the terminal alpha-galactose from Gb3"
+      },
+      {
+        "source": "Globotriaosylceramide",
+        "target": "Lysosome",
+        "type": "accumulates_in",
+        "validation": "VALIDATED",
+        "evidence": "When GLA is deficient, Gb3 cannot be degraded and accumulates in lysosomes"
+      },
+      {
+        "source": "GLA",
+        "target": "Lysosome",
+        "type": "localized_to",
+        "validation": "VALIDATED",
+        "evidence": "UniProt SL-0158, GO:0005764, GO:0043202"
+      },
+      {
+        "source": "Agalsidase alfa",
+        "target": "GLA",
+        "type": "replaces_function_of",
+        "action": "HYDROLYTIC ENZYME",
+        "validation": "VALIDATED"
+      },
+      {
+        "source": "Agalsidase beta",
+        "target": "GLA",
+        "type": "replaces_function_of",
+        "action": "HYDROLYTIC ENZYME",
+        "validation": "VALIDATED"
+      },
+      {
+        "source": "Migalastat",
+        "target": "GLA",
+        "type": "stabilises",
+        "action": "STABILISER",
+        "binding_site": "Active site",
+        "validation": "VALIDATED"
+      },
+      {
+        "source": "Lucerastat",
+        "target": "UGCG",
+        "type": "inhibits",
+        "action": "INHIBITOR",
+        "validation": "VALIDATED",
+        "therapeutic_rationale": "Reduces biosynthesis of glycosphingolipids upstream of Gb3"
+      },
+      {
+        "source": "Venglustat",
+        "target": "UGCG",
+        "type": "inhibits",
+        "action": "INHIBITOR",
+        "validation": "VALIDATED",
+        "therapeutic_rationale": "Substrate reduction therapy — reduces Gb3 production"
+      }
+    ],
+    "trials": [
+      {
+        "nct_id": "NCT05280548",
+        "title": "CARAT — Venglustat vs Standard of Care in Fabry Disease with LVH",
+        "phase": "Phase 3",
+        "status": "ACTIVE_NOT_RECRUITING",
+        "drug": "Venglustat (GZ402671)",
+        "sponsor": "Sanofi",
+        "enrollment": 104,
+        "primary_endpoint": "Left ventricular mass index (LVMI) by cardiac MRI",
+        "completion": "2026-05-15",
+        "validation": "VALIDATED"
+      },
+      {
+        "nct_id": "NCT05206773",
+        "title": "Venglustat vs Placebo for Neuropathic/Abdominal Pain in Fabry Disease",
+        "phase": "Phase 3",
+        "status": "ACTIVE_NOT_RECRUITING",
+        "drug": "Venglustat",
+        "sponsor": "Sanofi",
+        "enrollment": 122,
+        "validation": "VALIDATED"
+      },
+      {
+        "nct_id": "NCT03737214",
+        "title": "Long-term Safety/Tolerability of Lucerastat in Fabry Disease",
+        "phase": "Phase 3",
+        "status": "ACTIVE_NOT_RECRUITING",
+        "drug": "Lucerastat",
+        "sponsor": "Idorsia Pharmaceuticals",
+        "enrollment": 107,
+        "completion": "2029-08",
+        "validation": "VALIDATED"
+      },
+      {
+        "nct_id": "NCT06903261",
+        "title": "Migalastat in Pediatric Subjects (2 to <12 Years) with Fabry Disease",
+        "phase": "Phase 3",
+        "status": "RECRUITING",
+        "drug": "Migalastat HCl 20mg",
+        "sponsor": "Amicus Therapeutics",
+        "enrollment": 8,
+        "validation": "VALIDATED"
+      },
+      {
+        "nct_id": "NCT06270316",
+        "title": "AAV5-GLA (AMT-191) Gene Therapy in Classic Fabry Disease",
+        "phase": "Phase 1/2",
+        "status": "RECRUITING",
+        "drug": "AMT-191",
+        "sponsor": "UniQure Biopharma",
+        "enrollment": 12,
+        "validation": "VALIDATED"
+      },
+      {
+        "nct_id": "NCT04519749",
+        "title": "4D-310 Gene Therapy in Adults with Fabry Disease",
+        "phase": "Phase 1/2",
+        "status": "ACTIVE_NOT_RECRUITING",
+        "drug": "4D-310",
+        "sponsor": "4D Molecular Therapeutics",
+        "enrollment": 18,
+        "validation": "VALIDATED"
+      }
+    ],
+    "literature": [
+      {
+        "pmid": "33172708",
+        "doi": "10.1016/j.revmed.2020.08.019",
+        "title": "Fabry disease: A review",
+        "journal": "La Revue de medecine interne",
+        "year": 2020,
+        "key_finding": "Fabry disease is the second most frequent lysosomal storage disorder, X-linked, secondary to alpha-galactosidase A enzyme deficiency"
+      },
+      {
+        "pmid": "38254927",
+        "doi": "10.3390/genes15010037",
+        "title": "Fabry Disease in Women: Genetic Basis, Available Biomarkers, and Clinical Manifestations",
+        "journal": "Genes",
+        "year": 2023,
+        "key_finding": "Accumulation of glycosphingolipids, primarily globotriaosylceramide (Gb3), in vital organs"
+      }
+    ]
+  }
+}

@@ -1,0 +1,252 @@
+{
+  "cq_id": "cq14",
+  "question": "How can we validate synthetic lethal gene pairs from Feng et al. (2022) and identify druggable opportunities for TP53-mutant cancers?",
+  "validation_status": "PASS",
+  "execution_date": "2026-03-02",
+  "revision": "v3 — publication pipeline with Synapse grounding",
+  "nodes": [
+    {
+      "id": "HGNC:11998",
+      "type": "biolink:Gene",
+      "label": "TP53",
+      "properties": {
+        "symbol": "TP53",
+        "name": "tumor protein p53",
+        "ensembl": "ENSG00000141510",
+        "uniprot": "P04637",
+        "location": "17p13.1",
+        "entrez": "7157",
+        "omim": "191170",
+        "aliases": ["p53", "LFS1"]
+      },
+      "synapse_grounding": [
+        {
+          "synapse_id": "syn209607",
+          "name": "GSE34258 — TP53 mutation and chromothripsis in medulloblastoma",
+          "strength": "Moderate",
+          "rationale": "Profiles TP53 germline mutations (Li-Fraumeni) in medulloblastoma; demonstrates TP53 mutation drives genomic instability"
+        },
+        {
+          "synapse_id": "syn248623",
+          "name": "GSE19416 — TP53 mutation in ovarian tumours",
+          "strength": "Moderate",
+          "rationale": "Genome-wide copy number data for TP53-mutant vs wildtype ovarian tumors"
+        }
+      ]
+    },
+    {
+      "id": "HGNC:12441",
+      "type": "biolink:Gene",
+      "label": "TYMS",
+      "properties": {
+        "symbol": "TYMS",
+        "name": "thymidylate synthetase",
+        "ensembl": "ENSG00000176890",
+        "uniprot": "P04818",
+        "location": "18p11.32",
+        "entrez": "7298",
+        "omim": "188350",
+        "aliases": ["Tsase", "TMS", "HsT422"],
+        "prev_symbols": ["TS"]
+      },
+      "synapse_grounding": []
+    },
+    {
+      "id": "CHEMBL:185",
+      "type": "biolink:SmallMolecule",
+      "label": "5-fluorouracil",
+      "properties": {
+        "molecular_weight": 130.08,
+        "max_phase": 4,
+        "smiles": "O=c1[nH]cc(F)c(=O)[nH]1",
+        "synonyms": ["5-FU", "Adrucil", "Efudex", "Fluorouracil"]
+      },
+      "synapse_grounding": []
+    },
+    {
+      "id": "CHEMBL:225072",
+      "type": "biolink:SmallMolecule",
+      "label": "Pemetrexed",
+      "properties": {
+        "molecular_weight": 427.42,
+        "max_phase": 4,
+        "smiles": "Nc1nc2[nH]cc(CCc3ccc(C(=O)N[C@@H](CCC(=O)O)C(=O)O)cc3)c2c(=O)[nH]1",
+        "synonyms": ["Alimta", "LY-231514", "Pemfexy"],
+        "mechanisms_of_action": [
+          {"action": "INHIBITOR", "target": "Thymidylate synthase", "target_chembl": "CHEMBL1952", "fda_ref": "label/2004/021677lbl.pdf"},
+          {"action": "INHIBITOR", "target": "Dihydrofolate reductase", "target_chembl": "CHEMBL202", "fda_ref": "label/2004/021677lbl.pdf"},
+          {"action": "INHIBITOR", "target": "GAR transformylase", "target_chembl": "CHEMBL3972", "fda_ref": "label/2004/021677lbl.pdf"}
+        ]
+      },
+      "synapse_grounding": []
+    },
+    {
+      "id": "NCT:04695925",
+      "type": "biolink:ClinicalTrial",
+      "label": "TOP Trial - Osimertinib +/- Carboplatin/Pemetrexed for EGFR+TP53 NSCLC",
+      "properties": {
+        "status": "ACTIVE_NOT_RECRUITING",
+        "phase": "III",
+        "primary_outcome": "progression free survival",
+        "start_date": "2021-03-29",
+        "completion_date": "2025-11-01",
+        "lead_sponsor": "Li Zhang, MD",
+        "interventions": ["Osimertinib", "Pemetrexed", "Carboplatin"],
+        "verified": true
+      },
+      "synapse_grounding": []
+    },
+    {
+      "id": "NCT:03574402",
+      "type": "biolink:ClinicalTrial",
+      "label": "TRUMP Study - NGS-directed therapy for advanced NSCLC",
+      "properties": {
+        "status": "UNKNOWN",
+        "phase": "II",
+        "primary_outcome": "Response rate (RECIST v1.1)",
+        "start_date": "2018-07-09",
+        "completion_date": "2022-12-30",
+        "lead_sponsor": "Guangdong Association of Clinical Trials",
+        "interventions": ["Pemetrexed", "Cisplatin", "Sintilimab", "Afatinib", "Crizotinib", "Carboplatin"],
+        "conditions": ["Carcinoma, Non-Small-Cell Lung"],
+        "pubmed_ids": ["37488286", "35659479"],
+        "verified": true
+      },
+      "synapse_grounding": []
+    },
+    {
+      "id": "MONDO:0018875",
+      "type": "biolink:Disease",
+      "label": "Li-Fraumeni syndrome",
+      "properties": {
+        "ot_association_score": 0.876,
+        "rank": 1,
+        "note": "Top TP53-associated disease in Open Targets"
+      },
+      "synapse_grounding": [
+        {
+          "synapse_id": "syn209607",
+          "name": "GSE34258 — TP53 germline mutation / Li-Fraumeni / chromothripsis",
+          "strength": "Strong",
+          "rationale": "Directly studies Li-Fraumeni syndrome patients with germline TP53 mutations in medulloblastoma"
+        }
+      ]
+    },
+    {
+      "id": "EFO:0000571",
+      "type": "biolink:Disease",
+      "label": "lung adenocarcinoma",
+      "properties": {
+        "ot_association_score": 0.729,
+        "rank": 7,
+        "note": "Most relevant cancer type for NCT04695925 (NSCLC with TP53 mutations)"
+      },
+      "synapse_grounding": [
+        {
+          "synapse_id": "syn274449",
+          "name": "TCGA Lung adenocarcinoma - Consolidated",
+          "strength": "Strong",
+          "rationale": "Comprehensive TCGA lung adenocarcinoma dataset with genomic, transcriptomic, methylation, and clinical data; directly profiles the disease type relevant to NCT04695925"
+        },
+        {
+          "synapse_id": "syn1461166",
+          "name": "Lung adenocarcinoma (TCGA multi-omic)",
+          "strength": "Strong",
+          "rationale": "Multi-omic TCGA lung adenocarcinoma data including copy number, expression, methylation, RPPA, miRNA, and mutation data"
+        },
+        {
+          "synapse_id": "syn17084070",
+          "name": "Phenotype Transitions in Small Cell Lung Cancer",
+          "strength": "Weak",
+          "rationale": "SCLC-focused (not adenocarcinoma) but studies drug resistance mechanisms in lung cancer"
+        }
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "source": "HGNC:11998",
+      "target": "HGNC:12441",
+      "type": "biolink:genetically_interacts_with",
+      "evidence": "BioGRID genetic interaction confirmed (TP53 has 388 genetic interactions, TYMS confirmed as partner)",
+      "synapse_grounding": [
+        {
+          "synapse_id": "syn21641955",
+          "name": "Investigating Synthetic Lethality Associated with NF1 Loss",
+          "strength": "Analogous",
+          "rationale": "Same mechanism (synthetic lethality from tumor suppressor loss) tested for NF1 instead of TP53; uses CRISPR/Cas9 screens to identify druggable SL partners"
+        }
+      ]
+    },
+    {
+      "source": "CHEMBL:225072",
+      "target": "HGNC:12441",
+      "type": "biolink:targets",
+      "evidence": "ChEMBL /mechanism endpoint: 'Thymidylate synthase inhibitor' (mec_id=9637, target_chembl=CHEMBL1952, direct_interaction=1, disease_efficacy=1, max_phase=4)",
+      "synapse_grounding": []
+    },
+    {
+      "source": "CHEMBL:185",
+      "target": "HGNC:12441",
+      "type": "biolink:targets",
+      "evidence": "ChEMBL CHEMBL:185 (5-fluorouracil), approved TYMS inhibitor, max_phase=4",
+      "synapse_grounding": []
+    },
+    {
+      "source": "CHEMBL:225072",
+      "target": "NCT:04695925",
+      "type": "biolink:studied_in",
+      "evidence": "ClinicalTrials.gov NCT04695925: Phase III RCT of Osimertinib + Carboplatin/Pemetrexed for EGFR+TP53 NSCLC",
+      "synapse_grounding": []
+    },
+    {
+      "source": "CHEMBL:225072",
+      "target": "NCT:03574402",
+      "type": "biolink:studied_in",
+      "evidence": "ClinicalTrials.gov NCT03574402: Phase II umbrella study of NGS-directed therapy for advanced NSCLC (includes Pemetrexed arm)",
+      "synapse_grounding": []
+    },
+    {
+      "source": "HGNC:11998",
+      "target": "MONDO:0018875",
+      "type": "biolink:gene_associated_with_condition",
+      "evidence": "Open Targets association score 0.876 (rank 1 of 3,277 associations for ENSG00000141510)",
+      "synapse_grounding": []
+    },
+    {
+      "source": "HGNC:11998",
+      "target": "EFO:0000571",
+      "type": "biolink:gene_associated_with_condition",
+      "evidence": "Open Targets association score 0.729 (rank 7 of 3,277 associations for ENSG00000141510)",
+      "synapse_grounding": []
+    }
+  ],
+  "metadata": {
+    "source_dataset": "open-biosciences/biosciences-competency-questions-sample",
+    "source_reference": "Feng et al., Sci. Adv. 8, eabm6638 (2022). PMC9098673.",
+    "group_id": "cq14-feng-synthetic-lethality",
+    "tools_used": [
+      "hgnc_search_genes", "hgnc_get_gene",
+      "biogrid_search_genes", "biogrid_get_interactions",
+      "chembl_search_compounds", "chembl_get_compound",
+      "curl ChEMBL /mechanism",
+      "clinicaltrials_search_trials", "clinicaltrials_get_trial",
+      "opentargets_get_associations",
+      "synapse search_synapse", "synapse get_entity"
+    ],
+    "validation_score": {
+      "entities": "4/4 (gold standard) + 2 disease CURIEs + 1 trial added",
+      "edges": "3/3 (gold standard) + 4 new edges",
+      "path": "VALIDATED",
+      "steps": "5/5 (original) + 4 gap-fill steps"
+    },
+    "synapse_grounding_summary": {
+      "datasets_found": 6,
+      "strong": 3,
+      "moderate": 2,
+      "analogous": 1,
+      "weak": 1,
+      "coverage": "TP53 (2 datasets), Li-Fraumeni (1 dataset), lung adenocarcinoma (3 datasets), TP53-TYMS SL edge (1 analogous dataset). No direct Pemetrexed or TYMS datasets found."
+    }
+  }
+}

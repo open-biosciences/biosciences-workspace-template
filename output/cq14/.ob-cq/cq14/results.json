@@ -1,0 +1,193 @@
+{
+  "cq_id": "cq14",
+  "question": "How can we validate synthetic lethal gene pairs from Feng et al. (2022) and identify druggable opportunities for TP53-mutant cancers?",
+  "validation_status": "PASS",
+  "execution_date": "2026-03-02",
+  "revision": "v2 — gap-fill run addressing 5 quality review findings",
+  "nodes": [
+    {
+      "id": "HGNC:11998",
+      "type": "biolink:Gene",
+      "label": "TP53",
+      "properties": {
+        "symbol": "TP53",
+        "name": "tumor protein p53",
+        "ensembl": "ENSG00000141510",
+        "uniprot": "P04637",
+        "location": "17p13.1",
+        "entrez": "7157",
+        "omim": "191170",
+        "aliases": ["p53", "LFS1"]
+      }
+    },
+    {
+      "id": "HGNC:12441",
+      "type": "biolink:Gene",
+      "label": "TYMS",
+      "properties": {
+        "symbol": "TYMS",
+        "name": "thymidylate synthetase",
+        "ensembl": "ENSG00000176890",
+        "uniprot": "P04818",
+        "location": "18p11.32",
+        "entrez": "7298",
+        "omim": "188350",
+        "aliases": ["Tsase", "TMS", "HsT422"],
+        "prev_symbols": ["TS"]
+      }
+    },
+    {
+      "id": "CHEMBL:185",
+      "type": "biolink:SmallMolecule",
+      "label": "5-fluorouracil",
+      "properties": {
+        "molecular_weight": 130.08,
+        "max_phase": 4,
+        "smiles": "O=c1[nH]cc(F)c(=O)[nH]1",
+        "synonyms": ["5-FU", "Adrucil", "Efudex", "Fluorouracil"]
+      }
+    },
+    {
+      "id": "CHEMBL:225072",
+      "type": "biolink:SmallMolecule",
+      "label": "Pemetrexed",
+      "properties": {
+        "molecular_weight": 427.42,
+        "max_phase": 4,
+        "smiles": "Nc1nc2[nH]cc(CCc3ccc(C(=O)N[C@@H](CCC(=O)O)C(=O)O)cc3)c2c(=O)[nH]1",
+        "synonyms": ["Alimta", "LY-231514", "Pemfexy"],
+        "mechanisms_of_action": [
+          {"action": "INHIBITOR", "target": "Thymidylate synthase", "target_chembl": "CHEMBL1952", "fda_ref": "label/2004/021677lbl.pdf"},
+          {"action": "INHIBITOR", "target": "Dihydrofolate reductase", "target_chembl": "CHEMBL202", "fda_ref": "label/2004/021677lbl.pdf"},
+          {"action": "INHIBITOR", "target": "GAR transformylase", "target_chembl": "CHEMBL3972", "fda_ref": "label/2004/021677lbl.pdf"}
+        ]
+      }
+    },
+    {
+      "id": "NCT:04695925",
+      "type": "biolink:ClinicalTrial",
+      "label": "TOP Trial - Osimertinib +/- Carboplatin/Pemetrexed for EGFR+TP53 NSCLC",
+      "properties": {
+        "status": "ACTIVE_NOT_RECRUITING",
+        "phase": "III",
+        "primary_outcome": "progression free survival",
+        "start_date": "2021-03-29",
+        "completion_date": "2025-11-01",
+        "lead_sponsor": "Li Zhang, MD",
+        "interventions": ["Osimertinib", "Pemetrexed", "Carboplatin"],
+        "verified": true
+      }
+    },
+    {
+      "id": "NCT:03574402",
+      "type": "biolink:ClinicalTrial",
+      "label": "TRUMP Study - NGS-directed therapy for advanced NSCLC",
+      "properties": {
+        "status": "UNKNOWN",
+        "phase": "II",
+        "primary_outcome": "Response rate (RECIST v1.1)",
+        "start_date": "2018-07-09",
+        "completion_date": "2022-12-30",
+        "lead_sponsor": "Guangdong Association of Clinical Trials",
+        "interventions": ["Pemetrexed", "Cisplatin", "Sintilimab", "Afatinib", "Crizotinib", "Carboplatin"],
+        "conditions": ["Carcinoma, Non-Small-Cell Lung"],
+        "pubmed_ids": ["37488286", "35659479"],
+        "verified": true
+      }
+    },
+    {
+      "id": "MONDO:0018875",
+      "type": "biolink:Disease",
+      "label": "Li-Fraumeni syndrome",
+      "properties": {
+        "ot_association_score": 0.876,
+        "rank": 1,
+        "note": "Top TP53-associated disease in Open Targets"
+      }
+    },
+    {
+      "id": "EFO:0000571",
+      "type": "biolink:Disease",
+      "label": "lung adenocarcinoma",
+      "properties": {
+        "ot_association_score": 0.729,
+        "rank": 7,
+        "note": "Most relevant cancer type for NCT04695925 (NSCLC with TP53 mutations)"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "HGNC:11998",
+      "target": "HGNC:12441",
+      "type": "biolink:genetically_interacts_with",
+      "evidence": "BioGRID genetic interaction confirmed (TP53 has 388 genetic interactions, TYMS confirmed as partner)"
+    },
+    {
+      "source": "CHEMBL:225072",
+      "target": "HGNC:12441",
+      "type": "biolink:targets",
+      "evidence": "ChEMBL /mechanism endpoint: 'Thymidylate synthase inhibitor' (mec_id=9637, target_chembl=CHEMBL1952, direct_interaction=1, disease_efficacy=1, max_phase=4, FDA ref: label/2004/021677lbl.pdf)"
+    },
+    {
+      "source": "CHEMBL:185",
+      "target": "HGNC:12441",
+      "type": "biolink:targets",
+      "evidence": "ChEMBL CHEMBL:185 (5-fluorouracil), approved TYMS inhibitor, max_phase=4"
+    },
+    {
+      "source": "CHEMBL:225072",
+      "target": "NCT:04695925",
+      "type": "biolink:studied_in",
+      "evidence": "ClinicalTrials.gov NCT04695925: Phase III RCT of Osimertinib + Carboplatin/Pemetrexed for EGFR+TP53 NSCLC (verified via clinicaltrials_get_trial)"
+    },
+    {
+      "source": "CHEMBL:225072",
+      "target": "NCT:03574402",
+      "type": "biolink:studied_in",
+      "evidence": "ClinicalTrials.gov NCT03574402: Phase II umbrella study of NGS-directed therapy for advanced NSCLC (includes Pemetrexed arm, verified via clinicaltrials_get_trial)"
+    },
+    {
+      "source": "HGNC:11998",
+      "target": "MONDO:0018875",
+      "type": "biolink:gene_associated_with_condition",
+      "evidence": "Open Targets association score 0.876 (rank 1 of 3,277 associations for ENSG00000141510)"
+    },
+    {
+      "source": "HGNC:11998",
+      "target": "EFO:0000571",
+      "type": "biolink:gene_associated_with_condition",
+      "evidence": "Open Targets association score 0.729 (rank 7 of 3,277 associations for ENSG00000141510)"
+    }
+  ],
+  "metadata": {
+    "source_dataset": "open-biosciences/biosciences-competency-questions-sample",
+    "source_reference": "Feng et al., Sci. Adv. 8, eabm6638 (2022). PMC9098673.",
+    "group_id": "cq14-feng-synthetic-lethality",
+    "tools_used": [
+      "hgnc_search_genes",
+      "hgnc_get_gene",
+      "biogrid_search_genes",
+      "biogrid_get_interactions",
+      "chembl_search_compounds",
+      "chembl_get_compound",
+      "curl ChEMBL /mechanism",
+      "clinicaltrials_search_trials",
+      "clinicaltrials_get_trial",
+      "opentargets_get_associations"
+    ],
+    "validation_score": {
+      "entities": "4/4 (gold standard) + 2 disease CURIEs + 1 trial added",
+      "edges": "3/3 (gold standard) + 4 new edges",
+      "path": "VALIDATED",
+      "steps": "5/5 (original) + 4 gap-fill steps"
+    },
+    "gap_fill_summary": {
+      "gap1_orcs": "SKIPPED — BioGRID ORCS API returned empty responses (no API key available or endpoint unreachable)",
+      "gap2_5fu_trials": "COMPLETED — 12 trials found for 'TP53 fluorouracil'; none directly test TP53-TYMS synthetic lethality with 5-FU",
+      "gap3_mechanism": "COMPLETED — ChEMBL /mechanism confirms Pemetrexed as Thymidylate synthase inhibitor (CHEMBL1952) + DHFR inhibitor (CHEMBL202) + GAR transformylase inhibitor (CHEMBL3972)",
+      "gap4_nct03574402": "COMPLETED — Verified: Phase II umbrella study, NGS-directed therapy, includes Pemetrexed arm, status UNKNOWN, completed 2022",
+      "gap5_open_targets": "COMPLETED — TP53 (ENSG00000141510) has 3,277 disease associations; top: Li-Fraumeni syndrome (0.876), hepatocellular carcinoma (0.796), lung adenocarcinoma (0.729)"
+    }
+  }
+}

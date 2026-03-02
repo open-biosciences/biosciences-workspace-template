@@ -1,0 +1,62 @@
+{
+  "cq_id": "cq14",
+  "execution_date": "2026-03-02",
+  "validation_status": "PASS",
+  "entity_validation": [
+    {"entity": "TP53", "expected_curie": "HGNC:11998", "resolved_curie": "HGNC:11998", "match": "EXACT"},
+    {"entity": "TYMS", "expected_curie": "HGNC:12441", "resolved_curie": "HGNC:12441", "match": "EXACT"},
+    {"entity": "5-fluorouracil", "expected_curie": "CHEMBL:185", "resolved_curie": "CHEMBL:185", "match": "EXACT"},
+    {"entity": "Pemetrexed", "expected_curie": "CHEMBL:225072", "resolved_curie": "CHEMBL:225072", "match": "EXACT"}
+  ],
+  "edge_validation": [
+    {
+      "source": "HGNC:11998",
+      "target": "HGNC:12441",
+      "expected_type": "biolink:genetically_interacts_with",
+      "found": true,
+      "match": "EXACT"
+    },
+    {
+      "source": "CHEMBL:225072",
+      "target": "HGNC:12441",
+      "expected_type": "biolink:targets",
+      "found": true,
+      "match": "EXACT"
+    },
+    {
+      "source": "CHEMBL:225072",
+      "target": "NCT:04695925",
+      "expected_type": "biolink:studied_in",
+      "found": true,
+      "match": "EXACT"
+    }
+  ],
+  "path_validation": {
+    "gold_standard": "Gene(TP53) --[synthetic_lethal_with]--> Gene(TYMS) --[target_of]--> Drug(Pemetrexed) --[in_trial]--> Trial(NCT04695925)",
+    "discovered": "Gene(HGNC:11998/TP53) --[genetically_interacts_with]--> Gene(HGNC:12441/TYMS) --[targeted_by]--> Drug(CHEMBL:225072/Pemetrexed) --[studied_in]--> Trial(NCT:04695925)",
+    "verdict": "VALIDATED",
+    "evidence": "All 4 hops confirmed by live API evidence: HGNC resolved both genes, BioGRID confirmed genetic interaction, ChEMBL confirmed Pemetrexed as approved TYMS inhibitor (max_phase=4), ClinicalTrials.gov confirmed NCT04695925 studying Pemetrexed in TP53-mutant NSCLC"
+  },
+  "extra_findings": [
+    {
+      "type": "additional_drug",
+      "entity": "CHEMBL:185",
+      "label": "5-fluorouracil",
+      "note": "Additional approved TYMS inhibitor (max_phase=4) not in gold standard path but listed in key_entities"
+    },
+    {
+      "type": "additional_trial",
+      "entity": "NCT:03574402",
+      "label": "TRUMP study - NGS-directed therapy for advanced NSCLC",
+      "note": "Additional trial found matching TP53+pemetrexed search"
+    }
+  ],
+  "discrepancies": [],
+  "scores": {
+    "entity_resolution": "4/4 (100%)",
+    "edge_discovery": "3/3 (100%)",
+    "path_validation": "VALIDATED",
+    "steps_completed": "5/5 (100%)",
+    "overall": "PASS"
+  }
+}

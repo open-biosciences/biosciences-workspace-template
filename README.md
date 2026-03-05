@@ -10,6 +10,38 @@ This repo is a **Claude CoWork workspace template** for life sciences research p
 
 It is not a bootstrap script collection or environment setup tool. Its sole purpose is to capture research pipeline outputs in a reproducible, git-tracked format.
 
+## Three Core Research Personas
+
+---
+
+### Educational / Trainee
+
+*"I'm learning pathway biology and need to understand how drugs connect to diseases"*
+
+* **Benchmark:** FOP Drug Mechanism — 4-node linear path
+* **Value:** Structured learning with verified relationships
+* **Prompt/Action:** "Show me the mechanism step by step"
+
+---
+
+### Independent Investigator
+
+*"I need to validate my hypothesis about synthetic lethal targets before writing a grant"*
+
+* **Benchmark:** ARID1A Synthetic Lethality — multi-source validation
+* **Value:** Multi-database triangulation with evidence grading
+* **Prompt/Action:** "Cross-reference my targets against all data"
+
+---
+
+### Project Manager
+
+*"I need to understand the clinical landscape to prioritize resources"*
+
+* **Benchmark:** Health Emergency Landscape — 18,636+ trials
+* **Value:** Rapid clinical landscape with structured output
+* **Prompt/Action:** "Give me an evidence-based overview for leadership"
+
 ## Quick Start
 
 ### 1. Install the Open Biosciences plugin

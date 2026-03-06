@@ -10,37 +10,41 @@ This repo is a **Claude CoWork workspace template** for life sciences research p
 
 It is not a bootstrap script collection or environment setup tool. Its sole purpose is to capture research pipeline outputs in a reproducible, git-tracked format.
 
-## Three Core Research Personas
+## Who Is This For?
+
+### Learn — Educational / Trainee
+
+*"I'm learning pathway biology and need to understand how drugs connect to diseases."*
+
+Trace a disease mechanism step by step — from a mutated gene to the enzyme it encodes, the substrate that accumulates, and the drugs that intervene. The pipeline resolves every entity to a canonical ID and lays out the causal chain so you can see exactly how biology connects to therapy.
+
+* **Try it:** `/ob-research Identify the substrate that accumulates in Fabry disease and explain why`
+* **You get:** A mechanism report with a step-by-step table linking GLA to Gb3 accumulation to three approved therapies, every node grounded in HGNC, UniProt, and ChEMBL identifiers.
+* **Example output:** [`output/fabry-disease-gb3-accumulation/`](output/fabry-disease-gb3-accumulation/)
 
 ---
 
-### Educational / Trainee
+### Investigate — Independent Researcher
 
-*"I'm learning pathway biology and need to understand how drugs connect to diseases"*
+*"I need to validate my hypothesis about synthetic lethal targets before writing a grant."*
 
-* **Benchmark:** FOP Drug Mechanism — 4-node linear path
-* **Value:** Structured learning with verified relationships
-* **Prompt/Action:** "Show me the mechanism step by step"
+Cross-reference your targets against genomic, proteomic, pharmacological, and clinical databases in a single pipeline run. The system triangulates evidence from CRISPR screens, protein interaction networks, drug mechanisms, and active clinical trials — then grades every finding.
 
----
-
-### Independent Investigator
-
-*"I need to validate my hypothesis about synthetic lethal targets before writing a grant"*
-
-* **Benchmark:** ARID1A Synthetic Lethality — multi-source validation
-* **Value:** Multi-database triangulation with evidence grading
-* **Prompt/Action:** "Cross-reference my targets against all data"
+* **Try it:** `/ob-research How can we validate synthetic lethal gene pairs for TP53-mutant cancers and identify druggable opportunities?`
+* **You get:** 8 resolved gene targets, 3 CRISPR-validated SL partners (WEE1, CHEK1, PLK1), 7 drug candidates, 5 clinical trials, and a quality-reviewed BioRxiv draft — all traced to tool calls, not training knowledge.
+* **Example output:** [`output/cq14edgefix/`](output/cq14edgefix/)
 
 ---
 
-### Project Manager
+### Decide — Project Manager / Therapeutic Lead
 
-*"I need to understand the clinical landscape to prioritize resources"*
+*"I need to understand the clinical landscape for EGFR inhibitors to prioritize our pipeline."*
 
-* **Benchmark:** Health Emergency Landscape — 18,636+ trials
-* **Value:** Rapid clinical landscape with structured output
-* **Prompt/Action:** "Give me an evidence-based overview for leadership"
+Get an evidence-graded overview of approved drugs, resistance mechanisms, and active trials for a therapeutic area. The pipeline maps the target biology, surveys the competitive landscape, and produces a structured report ready for leadership review.
+
+* **Try it:** `/ob-research Which first-generation EGFR inhibitors have been validated in NSCLC trials and what limits their efficacy?`
+* **You get:** A drug validation report covering gefitinib, erlotinib, and osimertinib, the T790M resistance mechanism, and active Phase III trials — with every claim linked to ChEMBL, UniProt, and ClinicalTrials.gov sources.
+* **Example output:** [`output/cc-tyrosine-kinase/`](output/cc-tyrosine-kinase/)
 
 ## Quick Start
 

@@ -1,0 +1,279 @@
+{
+  "competency_question": "Can a drug-response framework that represents both inhibitory and stimulatory signaling, and that uses potency and efficacy in a combined index along with a cohort-level differential index, provide a more accurate basis for interpreting compound activity, comparing responses across diverse dose-response shapes, and identifying genotype-specific vulnerabilities or feedback-driven polarity shifts in high-throughput cancer screening—phenomena that traditional unidirectional metrics such as IC50, EC50, and AUC fail to capture?",
+  "cq_type": "methodological_pharmacometrics",
+  "protocol_adaptation": "Literature-anchored synthesis (Fuzzy-to-Fact adapted for methodology CQ — no gene/drug CURIEs to resolve; entities are frameworks, metrics, and datasets)",
+  "metadata": {
+    "total_pubmed_articles_retrieved": 10,
+    "total_web_searches": 4,
+    "total_frameworks_identified": 5,
+    "total_datasets_referenced": 4,
+    "search_date": "2026-03-12"
+  },
+  "nodes": [
+    {
+      "id": "FRAMEWORK:GR_METRICS",
+      "type": "Framework",
+      "label": "GR Metrics (Normalized Growth Rate Inhibition)",
+      "properties": {
+        "authors": "Hafner, Niepel, Chung, Sorger",
+        "year": 2016,
+        "journal": "Nature Methods",
+        "pmid": "27135972",
+        "doi": "10.1038/nmeth.3853",
+        "key_metrics": ["GR50", "GRmax", "GR_AOC"],
+        "addresses_cq_components": {
+          "combined_potency_efficacy": true,
+          "division_rate_correction": true,
+          "bidirectional_response": false,
+          "cohort_differential_index": false,
+          "polarity_shift_detection": false
+        },
+        "description": "Per-division metrics for drug potency (GR50) and efficacy (GRmax) that correct for confounders from unequal division rates. Superior to IC50/Emax for dividing cells but does not explicitly model stimulatory responses or cohort-level differential scoring."
+      }
+    },
+    {
+      "id": "FRAMEWORK:DSS",
+      "type": "Framework",
+      "label": "Drug Sensitivity Score (DSS/sDSS)",
+      "properties": {
+        "authors": "Yadav, Pemovska et al.",
+        "year": 2014,
+        "journal": "Scientific Reports",
+        "pmid": "24898935",
+        "doi": "10.1038/srep05193",
+        "key_metrics": ["DSS", "sDSS (selective DSS)"],
+        "addresses_cq_components": {
+          "combined_potency_efficacy": true,
+          "division_rate_correction": false,
+          "bidirectional_response": false,
+          "cohort_differential_index": true,
+          "polarity_shift_detection": false
+        },
+        "description": "Integrates multiple dose-response curve features into a single score. The selective variant (sDSS) normalizes patient responses against healthy controls, functioning as a cohort-level differential index. Applied in leukemia precision medicine."
+      }
+    },
+    {
+      "id": "FRAMEWORK:NDR",
+      "type": "Framework",
+      "label": "Normalized Drug Response (NDR)",
+      "properties": {
+        "authors": "Gupta et al.",
+        "year": 2020,
+        "journal": "Communications Biology",
+        "pmid": "31974521",
+        "doi": "10.1038/s42003-020-0765-z",
+        "key_metrics": ["NDR"],
+        "addresses_cq_components": {
+          "combined_potency_efficacy": true,
+          "division_rate_correction": true,
+          "bidirectional_response": true,
+          "cohort_differential_index": false,
+          "polarity_shift_detection": true
+        },
+        "description": "Uses both positive and negative controls to capture lethal, growth-inhibitory, AND growth-stimulatory drug behaviors from a single viability readout. The only identified metric that explicitly differentiates stimulatory from inhibitory modes — directly addresses the CQ's bidirectional requirement."
+      }
+    },
+    {
+      "id": "FRAMEWORK:MUSYC",
+      "type": "Framework",
+      "label": "MuSyC (Multidimensional Synergy of Combinations)",
+      "properties": {
+        "authors": "Meyer et al.",
+        "year": 2019,
+        "journal": "Cell Systems",
+        "pmc": "PMC6675406",
+        "key_metrics": ["alpha (synergistic potency)", "beta (synergistic efficacy)"],
+        "addresses_cq_components": {
+          "combined_potency_efficacy": true,
+          "division_rate_correction": false,
+          "bidirectional_response": true,
+          "cohort_differential_index": false,
+          "polarity_shift_detection": true
+        },
+        "description": "Decouples synergistic potency (alpha) from synergistic efficacy (beta) via 2D Hill equation. Handles bidirectional scenarios where a combination can be synergistic in potency but antagonistic in efficacy. Primarily designed for drug combinations rather than single-agent screening."
+      }
+    },
+    {
+      "id": "FRAMEWORK:HORMESIS",
+      "type": "Framework",
+      "label": "Hormetic Dose-Response Model",
+      "properties": {
+        "authors": "Calabrese, Nascarella",
+        "year_range": "2006-2009",
+        "key_pmids": ["16950854", "19037807", "19393280"],
+        "key_metrics": ["Delta_X (IC50 - BMD5)", "stimulatory magnitude"],
+        "addresses_cq_components": {
+          "combined_potency_efficacy": false,
+          "division_rate_correction": false,
+          "bidirectional_response": true,
+          "cohort_differential_index": false,
+          "polarity_shift_detection": true
+        },
+        "description": "Characterizes biphasic U-shaped or inverted-U dose-response relationships where low doses stimulate and high doses inhibit. The Delta_X parameter (IC50 minus toxic threshold) is inversely related to stimulatory magnitude. Validated in NCI yeast anticancer drug screen. Directly models the polarity shift phenomenon central to the CQ."
+      }
+    },
+    {
+      "id": "METRIC:IC50",
+      "type": "Traditional_Metric",
+      "label": "IC50 (Half-maximal Inhibitory Concentration)",
+      "properties": {
+        "directionality": "unidirectional (inhibition only)",
+        "limitations": [
+          "Confounded by cell division rate",
+          "Cannot be calculated when 50% inhibition not achieved",
+          "Does not distinguish cytostatic from cytotoxic effects",
+          "Misrepresents drug potency when growth rates vary",
+          "Cannot capture stimulatory responses"
+        ]
+      }
+    },
+    {
+      "id": "METRIC:EC50",
+      "type": "Traditional_Metric",
+      "label": "EC50 (Half-maximal Effective Concentration)",
+      "properties": {
+        "directionality": "unidirectional",
+        "limitations": [
+          "Conflates potency with efficacy",
+          "No division-rate correction",
+          "Depends on curve fitting assumptions"
+        ]
+      }
+    },
+    {
+      "id": "METRIC:AUC",
+      "type": "Traditional_Metric",
+      "label": "AUC (Area Under Dose-Response Curve)",
+      "properties": {
+        "directionality": "unidirectional",
+        "limitations": [
+          "Depends heavily on concentration range",
+          "Sensitive to experiment duration",
+          "Growth rate dependent",
+          "Values not comparable across studies",
+          "Captures both potency and efficacy but cannot disentangle them"
+        ]
+      }
+    },
+    {
+      "id": "DATASET:NCI_YEAST_SCREEN",
+      "type": "Dataset",
+      "label": "NCI Yeast Anticancer Drug Screen",
+      "properties": {
+        "context": "Used by Calabrese to validate hormetic dose-response model",
+        "relevance": "Demonstrated biphasic dose-response in anticancer compounds"
+      }
+    },
+    {
+      "id": "DATASET:GDSC",
+      "type": "Dataset",
+      "label": "Genomics of Drug Sensitivity in Cancer (GDSC)",
+      "properties": {
+        "context": "Large-scale cancer cell line drug screening",
+        "relevance": "Standard dataset where IC50/AUC limitations are most visible"
+      }
+    },
+    {
+      "id": "DATASET:CCLE",
+      "type": "Dataset",
+      "label": "Cancer Cell Line Encyclopedia (CCLE)",
+      "properties": {
+        "context": "Comprehensive cancer cell line characterization",
+        "relevance": "Paired genomic/drug response data for genotype-vulnerability analysis"
+      }
+    },
+    {
+      "id": "DATASET:HMS_LINCS",
+      "type": "Dataset",
+      "label": "HMS LINCS Breast Cancer Drug Response",
+      "properties": {
+        "context": "~4,700 breast cancer cell line + perturbagen pairs",
+        "pmid": "29112189",
+        "doi": "10.1038/sdata.2017.166",
+        "relevance": "Primary dataset for GR metrics validation; showed potency and efficacy are only weakly correlated"
+      }
+    },
+    {
+      "id": "CONCEPT:POLARITY_SHIFT",
+      "type": "Phenomenon",
+      "label": "Feedback-Driven Polarity Shift",
+      "properties": {
+        "description": "Drug response switches from inhibitory to stimulatory (or vice versa) due to compensatory feedback signaling",
+        "examples": ["Hormesis at low concentrations", "Paradoxical activation in BRAF-mutant melanoma with RAF inhibitors", "Compensatory pathway upregulation"],
+        "captured_by": ["FRAMEWORK:HORMESIS", "FRAMEWORK:NDR", "FRAMEWORK:MUSYC"],
+        "missed_by": ["METRIC:IC50", "METRIC:EC50", "METRIC:AUC"]
+      }
+    },
+    {
+      "id": "CONCEPT:GENOTYPE_VULNERABILITY",
+      "type": "Phenomenon",
+      "label": "Genotype-Specific Vulnerability",
+      "properties": {
+        "description": "Drug sensitivity patterns that differ by cancer genotype (e.g., KRAS-mutant vs wild-type responses)",
+        "captured_by": ["FRAMEWORK:DSS (via sDSS differential)", "FRAMEWORK:GR_METRICS (via division-rate correction)"],
+        "partially_captured_by": ["METRIC:AUC"],
+        "confounded_in": ["METRIC:IC50"]
+      }
+    }
+  ],
+  "edges": [
+    {"source": "FRAMEWORK:GR_METRICS", "target": "METRIC:IC50", "type": "REPLACES", "properties": {"improvement": "Division-rate correction eliminates confounders"}},
+    {"source": "FRAMEWORK:GR_METRICS", "target": "METRIC:EC50", "type": "REPLACES", "properties": {"improvement": "Per-division potency is more biologically meaningful"}},
+    {"source": "FRAMEWORK:DSS", "target": "METRIC:AUC", "type": "EXTENDS", "properties": {"improvement": "Integrates curve shape features into single composite score; sDSS adds cohort differential"}},
+    {"source": "FRAMEWORK:NDR", "target": "METRIC:IC50", "type": "REPLACES", "properties": {"improvement": "Captures bidirectional responses (stimulation + inhibition)"}},
+    {"source": "FRAMEWORK:NDR", "target": "CONCEPT:POLARITY_SHIFT", "type": "DETECTS", "properties": {"mechanism": "Positive and negative controls enable detection of growth stimulation"}},
+    {"source": "FRAMEWORK:HORMESIS", "target": "CONCEPT:POLARITY_SHIFT", "type": "MODELS", "properties": {"mechanism": "Delta_X parameter quantifies relationship between potency and stimulatory magnitude"}},
+    {"source": "FRAMEWORK:MUSYC", "target": "CONCEPT:POLARITY_SHIFT", "type": "DETECTS", "properties": {"mechanism": "Independent alpha parameters allow opposing potency synergies"}},
+    {"source": "FRAMEWORK:DSS", "target": "CONCEPT:GENOTYPE_VULNERABILITY", "type": "DETECTS", "properties": {"mechanism": "sDSS normalizes patient vs. healthy controls"}},
+    {"source": "FRAMEWORK:GR_METRICS", "target": "CONCEPT:GENOTYPE_VULNERABILITY", "type": "ENABLES", "properties": {"mechanism": "Removing division-rate confounders reveals true genotype-drug associations"}},
+    {"source": "FRAMEWORK:GR_METRICS", "target": "DATASET:HMS_LINCS", "type": "VALIDATED_ON", "properties": {}},
+    {"source": "FRAMEWORK:HORMESIS", "target": "DATASET:NCI_YEAST_SCREEN", "type": "VALIDATED_ON", "properties": {}},
+    {"source": "METRIC:IC50", "target": "CONCEPT:POLARITY_SHIFT", "type": "FAILS_TO_DETECT", "properties": {"reason": "Assumes monotonic inhibition; cannot represent growth above baseline"}},
+    {"source": "METRIC:AUC", "target": "CONCEPT:POLARITY_SHIFT", "type": "FAILS_TO_DETECT", "properties": {"reason": "Integrates area under curve without sign awareness; stimulation cancels inhibition"}},
+    {"source": "METRIC:IC50", "target": "CONCEPT:GENOTYPE_VULNERABILITY", "type": "CONFOUNDS", "properties": {"reason": "Division rate differences between genotypes create artefactual sensitivity correlations"}}
+  ],
+  "cq_answer_synthesis": {
+    "verdict": "PARTIALLY_SUPPORTED — No single existing framework fully matches all criteria in the CQ, but the evidence strongly supports the premise",
+    "evidence_mapping": {
+      "bidirectional_inhibitory_stimulatory": {
+        "status": "SUPPORTED",
+        "by": ["FRAMEWORK:NDR", "FRAMEWORK:HORMESIS", "FRAMEWORK:MUSYC"],
+        "key_finding": "NDR (Gupta et al., 2020) explicitly differentiates lethal, growth-inhibitory, and growth-stimulatory modes. Hormesis models (Calabrese) established the quantitative relationship between potency and biphasic stimulatory magnitude."
+      },
+      "combined_potency_efficacy_index": {
+        "status": "SUPPORTED",
+        "by": ["FRAMEWORK:GR_METRICS", "FRAMEWORK:DSS", "FRAMEWORK:MUSYC"],
+        "key_finding": "GR metrics provide per-division potency (GR50) + efficacy (GRmax). MuSyC decouples alpha (potency) and beta (efficacy) in combination screens. DSS integrates multiple curve features into a composite score."
+      },
+      "cohort_level_differential_index": {
+        "status": "SUPPORTED",
+        "by": ["FRAMEWORK:DSS"],
+        "key_finding": "The selective DSS (sDSS) normalizes patient drug responses against healthy control cells, directly implementing a cohort-level differential index for identifying cancer-selective drugs."
+      },
+      "polarity_shift_detection": {
+        "status": "SUPPORTED",
+        "by": ["FRAMEWORK:NDR", "FRAMEWORK:HORMESIS"],
+        "key_finding": "NDR detects growth stimulation from single viability readouts. Hormesis model's Delta_X parameter quantifies the inverse relationship between toxic potency and stimulatory magnitude."
+      },
+      "genotype_specific_vulnerabilities": {
+        "status": "SUPPORTED",
+        "by": ["FRAMEWORK:GR_METRICS", "FRAMEWORK:DSS"],
+        "key_finding": "GR metrics remove division-rate confounders that create artefactual genotype-sensitivity correlations (Hafner 2016). sDSS identifies genotype-selective drug effects via patient-vs-control normalization."
+      },
+      "unified_bidirectional_framework": {
+        "status": "GAP_IDENTIFIED",
+        "by": [],
+        "key_finding": "No single published framework simultaneously satisfies ALL CQ criteria: (1) bidirectional response modeling, (2) combined potency-efficacy index, (3) cohort-level differential index, (4) polarity shift detection, and (5) genotype-specific vulnerability identification. The CQ describes a COMPOSITE framework that would need to synthesize elements from NDR (bidirectional), GR metrics (potency-efficacy decoupling), DSS/sDSS (differential scoring), and hormesis models (polarity shift quantification)."
+      }
+    }
+  },
+  "validation_verdicts": {
+    "GR_metrics_superiority_over_IC50": "VALIDATED — PMID 27135972, 29112189, 29065900",
+    "DSS_cohort_differential": "VALIDATED — PMID 24898935, PMID 37996540",
+    "NDR_bidirectional_detection": "VALIDATED — PMID 31974521",
+    "hormesis_polarity_quantification": "VALIDATED — PMID 16950854, 19037807, 19393280",
+    "MuSyC_potency_efficacy_decoupling": "VALIDATED — PMC6675406",
+    "IC50_confounding_by_division_rate": "VALIDATED — PMID 27135972",
+    "no_unified_framework_exists": "UNVERIFIABLE — Absence of evidence is not evidence of absence; niche/recent work may not yet be indexed"
+  }
+}

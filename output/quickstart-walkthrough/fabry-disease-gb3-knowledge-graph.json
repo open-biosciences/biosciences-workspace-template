@@ -1,0 +1,371 @@
+{
+  "competency_question": "Identify the substrate that accumulates in Fabry disease and explain why",
+  "answer_summary": "Globotriaosylceramide (Gb3/GL-3) accumulates in Fabry disease due to deficiency of alpha-galactosidase A (GLA), the lysosomal enzyme that catalyzes hydrolysis of Gb3. GLA is encoded by the GLA gene on Xq22.1. When GLA activity is absent or reduced (due to pathogenic GLA variants), Gb3 cannot be degraded and progressively accumulates in lysosomes throughout the body, particularly in vascular endothelium, kidney, heart, and nervous system.",
+  "nodes": [
+    {
+      "id": "HGNC:4296",
+      "type": "Gene",
+      "label": "GLA",
+      "properties": {
+        "symbol": "GLA",
+        "name": "galactosidase alpha",
+        "ensembl": "ENSG00000102393",
+        "uniprot": "P06280",
+        "entrez": "2717",
+        "location": "Xq22.1",
+        "omim": "300644",
+        "alias": ["GALA"],
+        "source": "hgnc_get_gene(HGNC:4296)"
+      }
+    },
+    {
+      "id": "UniProtKB:P06280",
+      "type": "Protein",
+      "label": "Alpha-galactosidase A",
+      "properties": {
+        "accession": "P06280",
+        "name": "Alpha-galactosidase A",
+        "function": "Catalyzes the hydrolysis of glycosphingolipids and participates in their degradation in the lysosome",
+        "sequence_length": 429,
+        "pdb": ["1R46", "1R47", "3GXN", "3GXP", "3GXT", "3HG2", "3HG3", "3HG4", "3HG5", "3LX9"],
+        "string_id": "9606.ENSP00000218516",
+        "source": "uniprot_get_protein(UniProtKB:P06280)"
+      }
+    },
+    {
+      "id": "PubChem:CID66616222",
+      "type": "Metabolite",
+      "label": "Globotriaosylceramide (Gb3)",
+      "properties": {
+        "name": "Globotriaosylceramide",
+        "synonyms": ["Gb3", "GL-3", "Gb3Cer", "CD77 Antigen", "Shiga toxin receptor"],
+        "molecular_formula": "C38H69NO18",
+        "molecular_weight": 827.9,
+        "chebi": "CHEBI:18313",
+        "inchikey": "HFQKBOPMAOTAIR-TZSVBWBLSA-N",
+        "source": "pubchem_get_compound(PubChem:CID66616222)"
+      }
+    },
+    {
+      "id": "MONDO:0010526",
+      "type": "Disease",
+      "label": "Fabry disease",
+      "properties": {
+        "name": "Fabry disease",
+        "association_score": 0.893,
+        "total_disease_associations_for_GLA": 528,
+        "clinical_features": ["cardiomyopathy", "angiokeratoma corporis diffusum", "renal insufficiency", "stroke"],
+        "source": "opentargets_get_associations(ENSG00000102393)"
+      }
+    },
+    {
+      "id": "HGNC:18149",
+      "type": "Gene",
+      "label": "A4GALT",
+      "properties": {
+        "symbol": "A4GALT",
+        "name": "alpha 1,4-galactosyltransferase (P1PK blood group)",
+        "ensembl": "ENSG00000128274",
+        "uniprot": "Q9NPC4",
+        "entrez": "53947",
+        "location": "22q13.2",
+        "alias": ["Gb3S", "Gb3 synthase", "CD77 synthase", "globotriaosylceramide synthase"],
+        "function": "Catalyzes the transfer of galactose to lactosylceramide to produce globotriaosylceramide (Gb3Cer)",
+        "source": "hgnc_get_gene(HGNC:18149), uniprot_get_protein(UniProtKB:Q9NPC4)"
+      }
+    },
+    {
+      "id": "HGNC:4878",
+      "type": "Gene",
+      "label": "HEXA",
+      "properties": {
+        "symbol": "HEXA",
+        "name": "hexosaminidase subunit alpha",
+        "ensembl": "ENSG00000213614",
+        "uniprot": "P06865",
+        "entrez": "3073",
+        "location": "15q23",
+        "omim": "606869",
+        "source": "hgnc_get_gene(HGNC:4878)"
+      }
+    },
+    {
+      "id": "HGNC:4065",
+      "type": "Gene",
+      "label": "GAA",
+      "properties": {
+        "symbol": "GAA",
+        "name": "alpha glucosidase",
+        "ensembl": "ENSG00000171298",
+        "uniprot": "P10253",
+        "entrez": "2548",
+        "location": "17q25.3",
+        "omim": "606800",
+        "source": "hgnc_get_gene(HGNC:4065)"
+      }
+    },
+    {
+      "id": "WP:WP4153",
+      "type": "Pathway",
+      "label": "Degradation pathway of sphingolipids, including diseases",
+      "properties": {
+        "organism": "Homo sapiens",
+        "gene_count": 17,
+        "protein_count": 103,
+        "metabolite_count": 22,
+        "url": "https://classic.wikipathways.org/index.php/Pathway:WP4153",
+        "source": "wikipathways_get_pathway(WP:WP4153)"
+      }
+    },
+    {
+      "id": "WP:WP2788",
+      "type": "Pathway",
+      "label": "Sphingolipid metabolism",
+      "properties": {
+        "organism": "Homo sapiens",
+        "source": "wikipathways_get_pathways_for_gene(GLA)"
+      }
+    },
+    {
+      "id": "WP:WP5292",
+      "type": "Pathway",
+      "label": "Glycosphingolipid metabolism",
+      "properties": {
+        "organism": "Homo sapiens",
+        "source": "wikipathways_get_pathways_for_gene(GLA)"
+      }
+    },
+    {
+      "id": "CHEMBL:2108888",
+      "type": "Compound",
+      "label": "Agalsidase beta",
+      "properties": {
+        "name": "AGALSIDASE BETA",
+        "chembl_id": "CHEMBL2108888",
+        "mechanism": "Globotriosylceramide hydrolytic enzyme",
+        "action_type": "HYDROLYTIC ENZYME",
+        "max_phase": 4,
+        "target_chembl_id": "CHEMBL2366040",
+        "source": "chembl_search_compounds(agalsidase), get_mechanism(CHEMBL:2108888)"
+      }
+    },
+    {
+      "id": "CHEMBL:2108214",
+      "type": "Compound",
+      "label": "Agalsidase alfa",
+      "properties": {
+        "name": "AGALSIDASE ALFA",
+        "chembl_id": "CHEMBL2108214",
+        "mechanism": "Enzyme replacement therapy (recombinant alpha-galactosidase A)",
+        "max_phase": 4,
+        "source": "chembl_search_compounds(agalsidase)"
+      }
+    },
+    {
+      "id": "IUPHAR:10200",
+      "type": "Compound",
+      "label": "Migalastat",
+      "properties": {
+        "name": "migalastat",
+        "iuphar_id": 10200,
+        "chembl": "CHEMBL110458",
+        "drugbank": "DB05018",
+        "pubchem_cid": "176077",
+        "type": "Synthetic organic",
+        "approved": true,
+        "approval_source": "EMA (2016), FDA (2018)",
+        "brand_name": "Galafold",
+        "synonyms": ["1-Deoxygalactonojirimycin", "GR-181413A"],
+        "mechanism": "Pharmacological chaperone for amenable GLA variants",
+        "source": "iuphar_get_ligand(IUPHAR:10200)"
+      }
+    },
+    {
+      "id": "NCT05698901",
+      "type": "Trial",
+      "label": "Biomarkers and Cardiac Imaging for Fabry Disease Monitoring",
+      "properties": {
+        "nct_id": "NCT05698901",
+        "title": "Biomarkers and Cardiac Imaging Diagnostic Assay for Monitoring Patients With Fabry Disease",
+        "status": "RECRUITING",
+        "study_type": "OBSERVATIONAL",
+        "intervention": "Agalsidase beta",
+        "sponsor": "Mackay Memorial Hospital",
+        "start_date": "2023-09-19",
+        "source": "clinicaltrials_get_trial(NCT:05698901)"
+      }
+    },
+    {
+      "id": "NCT06904261",
+      "type": "Trial",
+      "label": "Migalastat in Pediatric Fabry (Ages 2-12)",
+      "properties": {
+        "nct_id": "NCT06904261",
+        "title": "A Study of Migalastat in Pediatric Subjects (2 to <12 Yrs) With Fabry Disease and Amenable GLA Variants",
+        "status": "RECRUITING",
+        "study_type": "INTERVENTIONAL",
+        "intervention": "Migalastat HCl 20 mg",
+        "sponsor": "Amicus Therapeutics",
+        "start_date": "2026-01-08",
+        "source": "clinicaltrials_get_trial(NCT:06904261)"
+      }
+    },
+    {
+      "id": "NCT06095713",
+      "type": "Trial",
+      "label": "Pegunigalsidase-alfa in Fabry Disease (German Study)",
+      "properties": {
+        "nct_id": "NCT06095713",
+        "title": "German Observational Multicenter Study of Patients With Fabry Disease Under Enzyme Replacement Therapy With Pegunigalsidase-alfa",
+        "status": "RECRUITING",
+        "study_type": "OBSERVATIONAL",
+        "intervention": "Pegunigalsidase-alfa",
+        "sponsor": "Universität Münster",
+        "start_date": "2023-10-01",
+        "source": "clinicaltrials_get_trial(NCT:06095713)"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "HGNC:4296",
+      "target": "UniProtKB:P06280",
+      "type": "ENCODES",
+      "properties": {"source": "hgnc_get_gene(HGNC:4296) cross_references"}
+    },
+    {
+      "source": "UniProtKB:P06280",
+      "target": "PubChem:CID66616222",
+      "type": "DEGRADES",
+      "properties": {
+        "mechanism": "Lysosomal hydrolysis of glycosphingolipids",
+        "source": "uniprot_get_protein(UniProtKB:P06280)"
+      }
+    },
+    {
+      "source": "HGNC:18149",
+      "target": "PubChem:CID66616222",
+      "type": "SYNTHESIZES",
+      "properties": {
+        "mechanism": "Transfer of galactose to lactosylceramide to produce Gb3",
+        "source": "uniprot_get_protein(UniProtKB:Q9NPC4)"
+      }
+    },
+    {
+      "source": "HGNC:4296",
+      "target": "MONDO:0010526",
+      "type": "ASSOCIATED_WITH",
+      "properties": {
+        "score": 0.893,
+        "source": "opentargets_get_associations(ENSG00000102393)"
+      }
+    },
+    {
+      "source": "HGNC:4296",
+      "target": "HGNC:18149",
+      "type": "INTERACTS",
+      "properties": {
+        "string_score": 0.949,
+        "evidence_type": "database, textmining",
+        "source": "string_get_interactions(STRING:9606.ENSP00000218516)"
+      }
+    },
+    {
+      "source": "HGNC:4296",
+      "target": "HGNC:4878",
+      "type": "INTERACTS",
+      "properties": {
+        "string_score": 0.939,
+        "evidence_type": "database, textmining",
+        "source": "string_get_interactions(STRING:9606.ENSP00000218516)"
+      }
+    },
+    {
+      "source": "HGNC:4296",
+      "target": "HGNC:4065",
+      "type": "INTERACTS",
+      "properties": {
+        "string_score": 0.943,
+        "evidence_type": "database, textmining",
+        "source": "string_get_interactions(STRING:9606.ENSP00000218516)"
+      }
+    },
+    {
+      "source": "HGNC:4296",
+      "target": "WP:WP4153",
+      "type": "MEMBER_OF",
+      "properties": {"source": "wikipathways_get_pathways_for_gene(GLA)"}
+    },
+    {
+      "source": "HGNC:4296",
+      "target": "WP:WP2788",
+      "type": "MEMBER_OF",
+      "properties": {"source": "wikipathways_get_pathways_for_gene(GLA)"}
+    },
+    {
+      "source": "HGNC:4296",
+      "target": "WP:WP5292",
+      "type": "MEMBER_OF",
+      "properties": {"source": "wikipathways_get_pathways_for_gene(GLA)"}
+    },
+    {
+      "source": "CHEMBL:2108888",
+      "target": "UniProtKB:P06280",
+      "type": "HYDROLYTIC_ENZYME",
+      "properties": {
+        "mechanism": "Globotriosylceramide hydrolytic enzyme",
+        "max_phase": 4,
+        "source": "get_mechanism(CHEMBL:2108888)"
+      }
+    },
+    {
+      "source": "IUPHAR:10200",
+      "target": "UniProtKB:P06280",
+      "type": "CHAPERONE",
+      "properties": {
+        "mechanism": "Pharmacological chaperone stabilizing amenable GLA variants",
+        "approved": true,
+        "source": "iuphar_get_ligand(IUPHAR:10200)"
+      }
+    },
+    {
+      "source": "CHEMBL:2108888",
+      "target": "MONDO:0010526",
+      "type": "TREATS",
+      "properties": {
+        "max_phase": 4,
+        "source": "clinicaltrials_search_trials(agalsidase Fabry disease)"
+      }
+    },
+    {
+      "source": "IUPHAR:10200",
+      "target": "MONDO:0010526",
+      "type": "TREATS",
+      "properties": {
+        "approved": true,
+        "source": "iuphar_get_ligand(IUPHAR:10200)"
+      }
+    }
+  ],
+  "metadata": {
+    "total_disease_associations": 528,
+    "total_string_interactions": 10,
+    "total_pathways": 7,
+    "clinical_trials": [
+      {"nct_id": "NCT05698901", "title": "Biomarkers and Cardiac Imaging for Fabry Disease", "phase": null, "status": "RECRUITING"},
+      {"nct_id": "NCT06904261", "title": "Migalastat in Pediatric Fabry (Ages 2-12)", "phase": null, "status": "RECRUITING"},
+      {"nct_id": "NCT06095713", "title": "Pegunigalsidase-alfa in Fabry Disease (German Study)", "phase": null, "status": "RECRUITING"},
+      {"nct_id": "NCT05067868", "title": "Replagal in Fabry Disease in India", "phase": null, "status": "RECRUITING"},
+      {"nct_id": "NCT06081062", "title": "Fabagal (Agalsidase Beta) in Fabry Disease", "phase": null, "status": "RECRUITING"}
+    ],
+    "total_fabry_trials": 266,
+    "total_migalastat_trials": 34,
+    "validation_verdicts": {
+      "VALIDATED": ["NCT05698901", "NCT06904261", "NCT06095713", "GLA-Fabry association", "A4GALT synthesizes Gb3", "GLA degrades Gb3", "Agalsidase beta mechanism", "Migalastat approval"],
+      "INVALID": [],
+      "UNVERIFIABLE": []
+    },
+    "pipeline_version": "Fuzzy-to-Fact v1.0",
+    "execution_date": "2026-03-06"
+  }
+}

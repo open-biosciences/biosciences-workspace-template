@@ -1,0 +1,408 @@
+{
+  "query": "Identify the substrate that accumulates in Fabry disease and explain why",
+  "disease": {
+    "id": "MONDO:0010526",
+    "name": "Fabry disease",
+    "type": "Disease",
+    "properties": {
+      "omim": "301500",
+      "orphanet": "ORPHA:122153",
+      "inheritance": "X-linked recessive",
+      "open_targets_score": 0.893
+    }
+  },
+  "nodes": [
+    {
+      "id": "HGNC:4296",
+      "type": "Gene",
+      "label": "GLA",
+      "properties": {
+        "symbol": "GLA",
+        "name": "galactosidase alpha",
+        "ensembl": "ENSG00000102393",
+        "entrez": "NCBIGene:2717",
+        "uniprot": "UniProtKB:P06280",
+        "location": "Xq22.1",
+        "omim": "300644",
+        "ec_number": "EC 3.2.1.22",
+        "role": "Causal gene — loss-of-function mutations cause Fabry disease"
+      },
+      "synapse_grounding": []
+    },
+    {
+      "id": "STRING:A4GALT",
+      "type": "Gene",
+      "label": "A4GALT",
+      "properties": {
+        "symbol": "A4GALT",
+        "name": "alpha 1,4-galactosyltransferase",
+        "string_score_with_GLA": 0.949,
+        "role": "Synthesizes Gb3 by adding alpha-1,4-galactose to lactosylceramide"
+      },
+      "synapse_grounding": []
+    },
+    {
+      "id": "STRING:HEXA",
+      "type": "Gene",
+      "label": "HEXA",
+      "properties": {
+        "symbol": "HEXA",
+        "name": "hexosaminidase subunit alpha",
+        "string_score_with_GLA": 0.939,
+        "role": "Co-pathway lysosomal hydrolase (Tay-Sachs disease)"
+      },
+      "synapse_grounding": []
+    },
+    {
+      "id": "STRING:HEXB",
+      "type": "Gene",
+      "label": "HEXB",
+      "properties": {
+        "symbol": "HEXB",
+        "name": "hexosaminidase subunit beta",
+        "string_score_with_GLA": 0.941,
+        "role": "Co-pathway lysosomal hydrolase (Sandhoff disease)"
+      },
+      "synapse_grounding": [
+        {
+          "synapse_id": "syn351270",
+          "strength": "Analogous",
+          "justification": "Sandhoff disease (HEXB-/-) thymus microarray — same sphingolipid pathway as Fabry, directly profiles HEXB-deficient tissue"
+        }
+      ]
+    },
+    {
+      "id": "STRING:ARSA",
+      "type": "Gene",
+      "label": "ARSA",
+      "properties": {
+        "symbol": "ARSA",
+        "name": "arylsulfatase A",
+        "string_score_with_GLA": 0.974,
+        "role": "Co-pathway lysosomal hydrolase (metachromatic leukodystrophy)"
+      },
+      "synapse_grounding": []
+    },
+    {
+      "id": "UniProtKB:P06280",
+      "type": "Protein",
+      "label": "Alpha-galactosidase A",
+      "properties": {
+        "uniprot": "UniProtKB:P06280",
+        "ec_number": "EC 3.2.1.22",
+        "gene": "GLA"
+      },
+      "synapse_grounding": []
+    },
+    {
+      "id": "PubChem:CID66616222",
+      "type": "Substrate",
+      "label": "Globotriaosylceramide (Gb3)",
+      "properties": {
+        "chebi": "CHEBI:18313",
+        "molecular_formula": "C38H69NO18",
+        "molecular_weight": 827.9,
+        "synonyms": ["CD77 Antigen", "Gb3Cer", "GL-3", "ceramide trihexoside"],
+        "role": "Accumulating substrate in Fabry disease"
+      },
+      "synapse_grounding": []
+    },
+    {
+      "id": "CHEMBL:2108888",
+      "type": "Compound",
+      "label": "Agalsidase beta (Fabrazyme)",
+      "properties": {
+        "mechanism": "Globotriosylceramide hydrolytic enzyme",
+        "action_type": "HYDROLYTIC ENZYME",
+        "max_phase": 4,
+        "modality": "Enzyme Replacement Therapy"
+      },
+      "synapse_grounding": [
+        {
+          "synapse_id": "syn58605953",
+          "strength": "Analogous",
+          "justification": "Pompe ERT study (Anding et al. 2023) — shared M6P receptor-mediated lysosomal enzyme delivery mechanism"
+        },
+        {
+          "synapse_id": "syn360896",
+          "strength": "Analogous",
+          "justification": "Pompe infantile-onset muscle microarray with ERT response correlation — analogous ERT delivery and tissue response"
+        }
+      ]
+    },
+    {
+      "id": "CHEMBL:2108214",
+      "type": "Compound",
+      "label": "Agalsidase alfa (Replagal)",
+      "properties": {
+        "mechanism": "Globotriosylceramide hydrolytic enzyme",
+        "max_phase": 4,
+        "modality": "Enzyme Replacement Therapy"
+      },
+      "synapse_grounding": [
+        {
+          "synapse_id": "syn58605953",
+          "strength": "Analogous",
+          "justification": "Pompe ERT study — shared ERT delivery mechanism via M6P receptor targeting"
+        }
+      ]
+    },
+    {
+      "id": "CHEMBL:110458",
+      "type": "Compound",
+      "label": "Migalastat (Galafold)",
+      "properties": {
+        "iuphar": "IUPHAR:10200",
+        "mechanism": "Alpha-galactosidase A stabiliser",
+        "action_type": "STABILISER",
+        "max_phase": 4,
+        "approved": true,
+        "approval_source": "EMA (2016), FDA (2018)",
+        "modality": "Pharmacological Chaperone"
+      },
+      "synapse_grounding": []
+    },
+    {
+      "id": "CHEMBL:4297801",
+      "type": "Compound",
+      "label": "Pegunigalsidase alfa (PRX-102)",
+      "properties": {
+        "max_phase": 3,
+        "modality": "PEGylated Enzyme Replacement Therapy"
+      },
+      "synapse_grounding": []
+    },
+    {
+      "id": "CHEMBL:1086997",
+      "type": "Compound",
+      "label": "Lucerastat",
+      "properties": {
+        "mechanism": "Glucosylceramide synthase inhibitor",
+        "modality": "Substrate Reduction Therapy"
+      },
+      "synapse_grounding": []
+    },
+    {
+      "id": "CHEMBL:5095471",
+      "type": "Compound",
+      "label": "Voxeralgagene autotemcel",
+      "properties": {
+        "modality": "Gene Therapy (ex vivo lentiviral)"
+      },
+      "synapse_grounding": []
+    },
+    {
+      "id": "CHEMBL:6068111",
+      "type": "Compound",
+      "label": "Duvalgagene otiparvovec",
+      "properties": {
+        "modality": "Gene Therapy (AAV in vivo)"
+      },
+      "synapse_grounding": []
+    },
+    {
+      "id": "WP:WP4153",
+      "type": "Pathway",
+      "label": "Degradation pathway of sphingolipids, including diseases",
+      "properties": {
+        "gene_count": 51,
+        "relevance": "Primary pathway — maps GLA role in Gb3 catabolism"
+      },
+      "synapse_grounding": [
+        {
+          "synapse_id": "syn353567",
+          "strength": "Weak",
+          "justification": "S1P lyase sphingolipid metabolism dataset (GSE18745) — contextual support for broader sphingolipid degradation pathway"
+        }
+      ]
+    },
+    {
+      "id": "WP:WP5292",
+      "type": "Pathway",
+      "label": "Glycosphingolipid metabolism",
+      "properties": {
+        "gene_count": 62,
+        "relevance": "Biosynthesis pathway — maps A4GALT-catalyzed Gb3 synthesis"
+      },
+      "synapse_grounding": []
+    },
+    {
+      "id": "WP:WP2788",
+      "type": "Pathway",
+      "label": "Sphingolipid metabolism",
+      "properties": {
+        "relevance": "Broader metabolic context"
+      },
+      "synapse_grounding": []
+    }
+  ],
+  "edges": [
+    {
+      "source": "HGNC:4296",
+      "target": "PubChem:CID66616222",
+      "type": "HYDROLYZES",
+      "properties": {
+        "evidence": "UniProt P06280 function, NCBI Gene summary, ChEMBL mechanism"
+      },
+      "synapse_grounding": []
+    },
+    {
+      "source": "STRING:A4GALT",
+      "target": "PubChem:CID66616222",
+      "type": "SYNTHESIZES",
+      "properties": {
+        "evidence": "WikiPathways WP5292, STRING score 0.949"
+      },
+      "synapse_grounding": []
+    },
+    {
+      "source": "HGNC:4296",
+      "target": "MONDO:0010526",
+      "type": "CAUSES",
+      "properties": {
+        "evidence": "Open Targets score 0.893, OMIM 301500",
+        "qualifier": "loss-of-function mutations"
+      },
+      "synapse_grounding": []
+    },
+    {
+      "source": "MONDO:0010526",
+      "target": "PubChem:CID66616222",
+      "type": "CHARACTERIZED_BY_ACCUMULATION",
+      "properties": {
+        "evidence": "NCBI Gene summary, OMIM, clinical phenotype"
+      },
+      "synapse_grounding": []
+    },
+    {
+      "source": "CHEMBL:2108888",
+      "target": "PubChem:CID66616222",
+      "type": "HYDROLYZES",
+      "properties": {
+        "evidence": "ChEMBL mechanism: Globotriosylceramide hydrolytic enzyme"
+      },
+      "synapse_grounding": [
+        {
+          "synapse_id": "syn58605953",
+          "strength": "Analogous",
+          "justification": "Pompe ERT mechanistic study — shared recombinant enzyme → lysosomal substrate hydrolysis paradigm"
+        }
+      ]
+    },
+    {
+      "source": "CHEMBL:110458",
+      "target": "HGNC:4296",
+      "type": "STABILIZES",
+      "properties": {
+        "evidence": "ChEMBL mechanism: Alpha-galactosidase A stabiliser; IUPHAR:10200"
+      },
+      "synapse_grounding": []
+    },
+    {
+      "source": "CHEMBL:1086997",
+      "target": "UGCG",
+      "type": "INHIBITS",
+      "properties": {
+        "evidence": "Substrate reduction therapy mechanism"
+      },
+      "synapse_grounding": []
+    },
+    {
+      "source": "STRING:ARSA",
+      "target": "HGNC:4296",
+      "type": "CO_PATHWAY",
+      "properties": {
+        "score": 0.974,
+        "evidence": "STRING score 0.974, WikiPathways WP4153"
+      },
+      "synapse_grounding": []
+    },
+    {
+      "source": "STRING:HEXA",
+      "target": "HGNC:4296",
+      "type": "CO_PATHWAY",
+      "properties": {
+        "score": 0.939,
+        "evidence": "STRING score 0.939, WikiPathways WP4153"
+      },
+      "synapse_grounding": []
+    },
+    {
+      "source": "STRING:HEXB",
+      "target": "HGNC:4296",
+      "type": "CO_PATHWAY",
+      "properties": {
+        "score": 0.941,
+        "evidence": "STRING score 0.941, WikiPathways WP4153"
+      },
+      "synapse_grounding": [
+        {
+          "synapse_id": "syn351270",
+          "strength": "Analogous",
+          "justification": "Sandhoff disease HEXB-/- thymus microarray directly profiles HEXB-deficient tissue in co-pathway lysosomal storage disorder"
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "protocol": "Fuzzy-to-Fact",
+    "phases_completed": ["ANCHOR", "ENRICH", "EXPAND", "TRAVERSE_DRUGS", "TRAVERSE_TRIALS", "VALIDATE", "PERSIST"],
+    "date": "2026-03-06",
+    "template": "Template 6 (Mechanism Elucidation) + Template 1 (Drug Discovery)",
+    "entity_counts": {
+      "genes": 5,
+      "proteins": 1,
+      "compounds": 8,
+      "diseases": 1,
+      "pathways": 3,
+      "trials": 4
+    },
+    "data_sources": [
+      "HGNC", "Ensembl", "NCBI Entrez", "UniProt", "PubChem", "ChEMBL", "IUPHAR/GtoPdb",
+      "Open Targets", "STRING", "BioGRID", "WikiPathways", "ClinicalTrials.gov"
+    ],
+    "synapse_datasets": [
+      {
+        "id": "syn58605953",
+        "title": "Anding et al. 2023 — Pompe ERT Study",
+        "disease": "Pompe disease",
+        "data_type": "RNA-seq (FASTQ)",
+        "grounding_strength": "Analogous",
+        "relevance": "Shared M6P receptor-mediated ERT delivery mechanism"
+      },
+      {
+        "id": "syn360896",
+        "title": "GSE38680 — Infantile-onset Pompe muscle transcriptomics",
+        "disease": "Pompe disease",
+        "data_type": "Microarray",
+        "grounding_strength": "Analogous",
+        "relevance": "ERT response correlation in muscle tissue"
+      },
+      {
+        "id": "syn351270",
+        "title": "GSE19641 — Sandhoff disease thymus microarray",
+        "disease": "Sandhoff disease",
+        "data_type": "Microarray",
+        "grounding_strength": "Analogous",
+        "relevance": "HEXB-/- co-pathway lysosomal storage disorder"
+      },
+      {
+        "id": "syn353567",
+        "title": "GSE18745 — S1P lyase sphingolipid metabolism",
+        "disease": "Sphingolipid pathway",
+        "data_type": "Microarray",
+        "grounding_strength": "Weak",
+        "relevance": "Broader sphingolipid degradation pathway context"
+      },
+      {
+        "id": "syn256935",
+        "title": "GSE27280 — Pompe ERT skeletal muscle",
+        "disease": "Pompe disease",
+        "data_type": "Microarray",
+        "grounding_strength": "Analogous",
+        "relevance": "Additional ERT response data in skeletal muscle"
+      }
+    ],
+    "notes": "Fabry disease has Very Low coverage on Synapse.org. All grounding is cross-disease (Analogous) from related lysosomal storage disorders sharing the M6P-mediated ERT mechanism or sphingolipid degradation pathway."
+  }
+}

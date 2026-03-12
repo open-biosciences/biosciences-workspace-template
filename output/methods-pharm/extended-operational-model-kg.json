@@ -1,0 +1,529 @@
+{
+  "competency_question": "How can an extended operational model—grounded in the Emax framework and the Black–Leff model, and incorporating bidirectional signaling through the sign-preserving potency–efficacy indices S\u2032 and \u0394S\u2032—more accurately represent, compare, and interpret both inhibitory and disinhibitory drug responses in high-throughput cancer screening, including (via \u0394S\u2032) genotype-specific vulnerabilities and feedback-driven polarity shifts that traditional metrics such as IC50, EC50, and AUC fail to capture?",
+  "cq_type": "methodological_pharmacometrics_extension",
+  "protocol_adaptation": "Literature-anchored synthesis (Fuzzy-to-Fact adapted for methodology CQ — extends prior drug-response-framework-kg.json with operational model foundations and novel metric analysis)",
+  "extends": "drug-response-framework-kg.json",
+  "metadata": {
+    "total_pubmed_articles_retrieved": 14,
+    "total_web_searches": 4,
+    "total_frameworks_identified": 9,
+    "total_datasets_referenced": 4,
+    "search_date": "2026-03-12",
+    "novel_indices_status": "S\u2032 and \u0394S\u2032 NOT FOUND in published literature — appear to be novel proposed metrics"
+  },
+  "nodes": [
+    {
+      "id": "FRAMEWORK:BLACK_LEFF_OM",
+      "type": "Framework",
+      "label": "Black-Leff Operational Model of Agonism",
+      "properties": {
+        "authors": "Black JW, Leff P",
+        "year": 1983,
+        "journal": "Proceedings of the Royal Society of London B",
+        "pmid": "6141562",
+        "doi": "10.1098/rspb.1983.0093",
+        "key_parameters": ["KA (dissociation constant)", "tau (transducer ratio = [R0]/KE)", "Emax (system maximum)"],
+        "core_equation": "E = Emax * tau * [A] / ([A] * (1 + tau) + KA)",
+        "addresses_cq_components": {
+          "combined_potency_efficacy": true,
+          "bidirectional_response": false,
+          "sign_preserving": false,
+          "cohort_differential_index": false,
+          "genotype_vulnerability": false,
+          "disinhibitory_modeling": false
+        },
+        "description": "Foundational model describing agonism by three parameters (KA, tau, KE). The transducer ratio tau defines efficacy as [R0]/KE. Widely used to quantify drug agonism and has been extended to biased agonism, allosteric modulation, and inverse agonism.",
+        "source": "[Source: PubMed get_article_metadata('6141562')]"
+      }
+    },
+    {
+      "id": "FRAMEWORK:BLACK_LEFF_1985",
+      "type": "Framework",
+      "label": "Black-Leff Operational Model (E/[A] Curve Shape Extension)",
+      "properties": {
+        "authors": "Black JW, Leff P, Shankley NP, Wood J",
+        "year": 1985,
+        "journal": "British Journal of Pharmacology",
+        "pmid": "3978322",
+        "pmc": "PMC1987296",
+        "doi": "10.1111/j.1476-5381.1985.tb12941.x",
+        "description": "Extended the operational model to non-hyperbolic E/[A] curves, demonstrating that KA estimation via irreversible antagonism remains valid regardless of curve shape. This extension is critical for cancer HTS where Hill slopes deviate significantly from unity.",
+        "source": "[Source: PubMed get_article_metadata('3978322')]"
+      }
+    },
+    {
+      "id": "FRAMEWORK:EHLERT_CONSTITUTIVE",
+      "type": "Framework",
+      "label": "Ehlert Modified Operational Model (Constitutive Activity + Inverse Agonism)",
+      "properties": {
+        "authors": "Ehlert FJ, Suga H, Griffin MT",
+        "year": 2011,
+        "journal": "Journal of Pharmacology and Experimental Therapeutics",
+        "pmid": "21576379",
+        "pmc": "PMC3141894",
+        "doi": "10.1124/jpet.111.179309",
+        "key_parameters": ["epsilon (fraction of occupied receptor in active state)", "epsilon_i (fraction in inactive state)", "tau_sys (system-level constitutive activity)", "Kb (affinity for active state)", "Ka (affinity for inactive state)"],
+        "addresses_cq_components": {
+          "combined_potency_efficacy": true,
+          "bidirectional_response": true,
+          "sign_preserving": true,
+          "cohort_differential_index": false,
+          "genotype_vulnerability": false,
+          "disinhibitory_modeling": true
+        },
+        "description": "Modification of receptor theory for estimating affinities and relative efficacies in functional assays with constitutive activity. Includes parameters for fractions of occupied and free receptor populations in active and inactive states. The total stimulus represents summation of active states. A modified operational model expresses response as logistic function of total stimulus, enabling characterization of both agonism and inverse agonism. Estimates affinity constants for active (Kb) and inactive (Ka) receptor states.",
+        "relevance_to_cq": "CRITICAL — This is the closest existing extension to what S\u2032 requires: a sign-preserving representation where tau can be positive (agonism) or effectively negative (inverse agonism/constitutive activity reduction). The epsilon/epsilon_i parameter pair naturally preserves sign information about the direction of receptor activation.",
+        "source": "[Source: PubMed get_article_metadata('21576379')]"
+      }
+    },
+    {
+      "id": "FRAMEWORK:TRANSDUCTION_COEFFICIENT",
+      "type": "Framework",
+      "label": "Transduction Coefficient log(tau/KA) for Biased Agonism",
+      "properties": {
+        "authors": "Kenakin T, Watson C, Muniz-Medina V, Christopoulos A, Novick S",
+        "year": 2012,
+        "journal": "ACS Chemical Neuroscience",
+        "pmid": "22860188",
+        "pmc": "PMC3369801",
+        "doi": "10.1021/cn200111m",
+        "key_metrics": ["log(tau/KA) transduction coefficient", "Delta-log(tau/KA) bias factor"],
+        "addresses_cq_components": {
+          "combined_potency_efficacy": true,
+          "bidirectional_response": false,
+          "sign_preserving": false,
+          "cohort_differential_index": false,
+          "genotype_vulnerability": false,
+          "disinhibitory_modeling": false
+        },
+        "description": "Introduced the transduction coefficient log(tau/KA) as a single-parameter scale combining affinity and efficacy that is independent of receptor density. The Delta-log(tau/KA) bias factor enables comparison across signaling pathways. This is the closest existing analogue to the CQ\u2019s proposed combined potency-efficacy index, but it is NOT sign-preserving and was not designed for cancer HTS.",
+        "relevance_to_cq": "The log(tau/KA) transduction coefficient is the mathematical precursor to S\u2032. Extending it with sign-preservation (allowing negative tau for inverse agonism) and adapting it to cancer cell viability readouts would yield S\u2032. The Delta-log(tau/KA) bias factor is analogous to \u0394S\u2032.",
+        "source": "[Source: PubMed get_article_metadata('22860188')]"
+      }
+    },
+    {
+      "id": "FRAMEWORK:COMPLEMENTARY_BIAS_SCALE",
+      "type": "Framework",
+      "label": "Complementary log(tau) Scale for Partial Agonists",
+      "properties": {
+        "authors": "Burgue\u00f1o J, Pujol M, Monroy X, Roche D, Varela MJ, Merlos M, Giraldo J",
+        "year": 2017,
+        "journal": "Scientific Reports",
+        "pmid": "29133887",
+        "pmc": "PMC5684405",
+        "doi": "10.1038/s41598-017-15258-z",
+        "key_metrics": ["log(tau) efficacy-driven scale"],
+        "description": "Presented a complementary efficacy-driven log(tau) scale that addresses limitations of log(tau/KA) when partial agonism is present. Separating the efficacy component from the combined affinity-efficacy transduction coefficient provides better compound profiling. Applied to mu-opioid receptor agonists.",
+        "relevance_to_cq": "Demonstrates the value of isolating the efficacy component from combined scores \u2014 directly relevant to the CQ\u2019s requirement that S\u2032 independently represent both potency and efficacy axes while maintaining a combined index.",
+        "source": "[Source: PubMed get_article_metadata('29133887')]"
+      }
+    },
+    {
+      "id": "FRAMEWORK:OMA_LIMITATIONS",
+      "type": "Framework",
+      "label": "Operational Model: Applications, Limitations, and Fitting Procedures",
+      "properties": {
+        "authors": "Jakub\u00edk J, Rand\u00e1kov\u00e1 A, Rudajev V, Zim\u010d\u00edk P, El-Fakahany EE, Dole\u017eal V",
+        "year": 2019,
+        "journal": "Scientific Reports",
+        "pmid": "30874590",
+        "pmc": "PMC6420642",
+        "doi": "10.1038/s41598-019-40993-w",
+        "key_finding": "The functional efficacy parameter tau is interdependent on KA and Emax, making fitting tricky. Proposed a rigorous procedure where KA and Emax are derived from half-efficient concentration and apparent maximal responses from a series of curves, then fixed during tau estimation.",
+        "relevance_to_cq": "Directly addresses the practical challenge of extracting S\u2032 from HTS data: if tau/KA and Emax are interdependent, a combined index S\u2032 must account for this covariance. The proposed fitting procedure could be adapted for cancer cell dose-response data.",
+        "source": "[Source: PubMed get_article_metadata('30874590')]"
+      }
+    },
+    {
+      "id": "FRAMEWORK:OMA_SLOPE_REEVALUATION",
+      "type": "Framework",
+      "label": "Critical Re-evaluation of OMA Slope Factor (Hill-Based OMA)",
+      "properties": {
+        "authors": "Rand\u00e1kov\u00e1 A, Nelic D, Jakub\u00edk J",
+        "year": 2023,
+        "journal": "Scientific Reports",
+        "pmid": "37845324",
+        "pmc": "PMC10579308",
+        "doi": "10.1038/s41598-023-45004-7",
+        "key_finding": "Exponentiation of operational efficacy in the Black & Leff equation can break relationships among OMA parameters, producing unreliable efficacy estimates. The Hill equation-based OMA produces better parameter estimates when slope factors vary between agonists. Recommends Hill equation-based OMA over Black & Leff equation when concentration-response curves differ in slope factor.",
+        "relevance_to_cq": "CRITICAL for cancer HTS application. Cancer cell line dose-response curves frequently exhibit variable Hill slopes (non-unity n). This paper provides the mathematical justification for using a Hill-based operational model as the foundation for S\u2032, rather than the original Black & Leff formulation.",
+        "source": "[Source: PubMed get_article_metadata('37845324')]"
+      }
+    },
+    {
+      "id": "FRAMEWORK:KENAKIN_GPCR_REVIEW",
+      "type": "Framework",
+      "label": "Theoretical Aspects of GPCR-Ligand Complex Pharmacology (Comprehensive Review)",
+      "properties": {
+        "authors": "Kenakin T",
+        "year": 2016,
+        "journal": "Chemical Reviews",
+        "pmid": "26856272",
+        "doi": "10.1021/acs.chemrev.5b00561",
+        "description": "Comprehensive 50-year review of receptor models including the Black/Leff operational model, ternary complex models, allosteric mechanisms, and molecular dynamics approaches. Documents how the operational model has been extended to allosteric modulation, functional selectivity, and biased agonism.",
+        "source": "[Source: PubMed get_article_metadata('26856272')]"
+      }
+    },
+    {
+      "id": "PHENOMENON:PARADOXICAL_BRAF",
+      "type": "Phenomenon",
+      "label": "Paradoxical MAPK Activation by BRAF Inhibitors",
+      "properties": {
+        "description": "BRAF inhibitors (vemurafenib, dabrafenib) paradoxically activate the MAPK pathway in BRAF wild-type cells while inhibiting it in BRAF V600-mutant cells. This genotype-dependent polarity shift is a canonical example of disinhibitory drug response in cancer.",
+        "key_evidence": "Vemurafenib accelerates keratinocyte proliferation and wound healing via paradoxical ERK phosphorylation in BRAF WT cells; MEK inhibitor co-administration reverses this effect",
+        "pmids": ["27476449", "24456413"],
+        "dois": ["10.1038/ncomms12348", "10.1517/14656566.2014.881471"],
+        "captured_by": ["S\u2032 (proposed) \u2014 sign flip between genotypes would produce positive S\u2032 in BRAF-mutant and negative S\u2032 in BRAF-WT", "\u0394S\u2032 (proposed) \u2014 differential would quantify genotype-specific vulnerability"],
+        "missed_by": ["IC50 \u2014 cannot represent activation", "AUC \u2014 cancels opposing effects"],
+        "source": "[Source: PubMed get_article_metadata('27476449', '24456413')]"
+      }
+    },
+    {
+      "id": "PHENOMENON:PARADOXICAL_BIDIRECTIONAL",
+      "type": "Phenomenon",
+      "label": "Paradoxical and Bidirectional Drug Effects (Comprehensive Taxonomy)",
+      "properties": {
+        "authors": "Smith SW, Hauben M, Aronson JK",
+        "year": 2012,
+        "journal": "Drug Safety",
+        "pmid": "22272687",
+        "doi": "10.2165/11597710-000000000-00000",
+        "description": "Comprehensive review classifying paradoxical drug reactions into three types: (1) opposite to expected therapeutic effect, (2) paradoxical precipitation of the indicated condition, (3) paradoxical relative to known pharmacology. Mechanisms include receptor-level, stereochemical, multi-target, competing compartment, oscillating system disruption, and feedback loop effects.",
+        "relevance_to_cq": "Establishes the biological reality of the phenomena that S\u2032 and \u0394S\u2032 are designed to capture. Traditional pharmacometrics has no standard metric for quantifying these paradoxical/bidirectional effects across a screening panel.",
+        "source": "[Source: PubMed get_article_metadata('22272687')]"
+      }
+    },
+    {
+      "id": "METRIC:S_PRIME",
+      "type": "Proposed_Metric",
+      "label": "S\u2032 (Sign-Preserving Potency-Efficacy Index)",
+      "properties": {
+        "status": "NOT_FOUND_IN_LITERATURE",
+        "literature_search": "PubMed (3 queries), WebSearch (2 queries), bioRxiv (category search) \u2014 zero results for 'sign-preserving potency efficacy index' or 'S-prime drug response'",
+        "proposed_definition": "A combined index derived from the Black-Leff operational model where the sign of S\u2032 encodes the direction of drug effect (positive = inhibitory/agonist, negative = stimulatory/inverse agonist), while its magnitude encodes the strength of the potency-efficacy combination. Mathematically analogous to a sign-extended log(tau/KA) where tau can take negative values to represent inverse agonism or disinhibition.",
+        "mathematical_ancestry": {
+          "from_black_leff": "tau = [R0]/KE (transducer ratio)",
+          "from_kenakin": "log(tau/KA) (transduction coefficient)",
+          "from_ehlert": "epsilon/epsilon_i parameters for active/inactive receptor states",
+          "from_hill_oma": "Hill-based OMA (Randakova 2023) as recommended base equation"
+        },
+        "addresses_cq_components": {
+          "combined_potency_efficacy": true,
+          "bidirectional_response": true,
+          "sign_preserving": true,
+          "cohort_differential_index": false,
+          "genotype_vulnerability": false,
+          "disinhibitory_modeling": true
+        },
+        "source": "[Source: PubMed search (zero results), WebSearch (zero results) \u2014 NOVEL PROPOSED METRIC]"
+      }
+    },
+    {
+      "id": "METRIC:DELTA_S_PRIME",
+      "type": "Proposed_Metric",
+      "label": "\u0394S\u2032 (Differential Sign-Preserving Potency-Efficacy Index)",
+      "properties": {
+        "status": "NOT_FOUND_IN_LITERATURE",
+        "proposed_definition": "The difference in S\u2032 between a test condition (e.g., mutant genotype, treatment arm) and a reference condition (e.g., wild-type, vehicle control). \u0394S\u2032 = S\u2032_test - S\u2032_reference. Because S\u2032 preserves sign, \u0394S\u2032 can detect polarity shifts: a compound with positive S\u2032 in one genotype and negative S\u2032 in another yields a large absolute \u0394S\u2032 that flags the genotype-specific vulnerability.",
+        "mathematical_ancestry": {
+          "from_dss": "sDSS cohort differential concept (Yadav 2014, PMID 24898935)",
+          "from_kenakin": "Delta-log(tau/KA) bias factor across pathways",
+          "from_gr_metrics": "GR metric per-division correction eliminates confounders before differential"
+        },
+        "addresses_cq_components": {
+          "combined_potency_efficacy": true,
+          "bidirectional_response": true,
+          "sign_preserving": true,
+          "cohort_differential_index": true,
+          "genotype_vulnerability": true,
+          "disinhibitory_modeling": true
+        },
+        "source": "[Source: PubMed search (zero results), WebSearch (zero results) \u2014 NOVEL PROPOSED METRIC]"
+      }
+    },
+    {
+      "id": "FRAMEWORK:GR_METRICS",
+      "type": "Framework",
+      "label": "GR Metrics (inherited from prior KG)",
+      "properties": {
+        "pmid": "27135972",
+        "doi": "10.1038/nmeth.3853",
+        "inherited_from": "drug-response-framework-kg.json"
+      }
+    },
+    {
+      "id": "FRAMEWORK:DSS",
+      "type": "Framework",
+      "label": "Drug Sensitivity Score / sDSS (inherited from prior KG)",
+      "properties": {
+        "pmid": "24898935",
+        "doi": "10.1038/srep05193",
+        "inherited_from": "drug-response-framework-kg.json"
+      }
+    },
+    {
+      "id": "FRAMEWORK:NDR",
+      "type": "Framework",
+      "label": "Normalized Drug Response (inherited from prior KG)",
+      "properties": {
+        "pmid": "31974521",
+        "doi": "10.1038/s42003-020-0765-z",
+        "inherited_from": "drug-response-framework-kg.json"
+      }
+    },
+    {
+      "id": "FRAMEWORK:MUSYC",
+      "type": "Framework",
+      "label": "MuSyC (inherited from prior KG)",
+      "properties": {
+        "pmc": "PMC6675406",
+        "inherited_from": "drug-response-framework-kg.json"
+      }
+    },
+    {
+      "id": "FRAMEWORK:HORMESIS",
+      "type": "Framework",
+      "label": "Hormetic Dose-Response Model (inherited from prior KG)",
+      "properties": {
+        "pmids": ["16950854", "19037807", "19393280"],
+        "inherited_from": "drug-response-framework-kg.json"
+      }
+    },
+    {
+      "id": "METRIC:IC50",
+      "type": "Traditional_Metric",
+      "label": "IC50 (inherited from prior KG)",
+      "properties": { "inherited_from": "drug-response-framework-kg.json" }
+    },
+    {
+      "id": "METRIC:EC50",
+      "type": "Traditional_Metric",
+      "label": "EC50 (inherited from prior KG)",
+      "properties": { "inherited_from": "drug-response-framework-kg.json" }
+    },
+    {
+      "id": "METRIC:AUC",
+      "type": "Traditional_Metric",
+      "label": "AUC (inherited from prior KG)",
+      "properties": { "inherited_from": "drug-response-framework-kg.json" }
+    },
+    {
+      "id": "METRIC:LOG_TAU_KA",
+      "type": "Existing_Metric",
+      "label": "log(tau/KA) Transduction Coefficient",
+      "properties": {
+        "pmid": "22860188",
+        "doi": "10.1021/cn200111m",
+        "formula": "log(tau/KA) where tau is operational efficacy from Black-Leff and KA is dissociation constant",
+        "limitations_for_cq": [
+          "Not sign-preserving (tau is always positive in standard formulation)",
+          "Not designed for cancer HTS viability assays",
+          "No cohort-level differential variant published",
+          "Assumes GPCR signaling context, not cancer cell growth/death"
+        ],
+        "source": "[Source: PubMed get_article_metadata('22860188')]"
+      }
+    },
+    {
+      "id": "METRIC:DELTA_LOG_TAU_KA",
+      "type": "Existing_Metric",
+      "label": "Delta-log(tau/KA) Bias Factor",
+      "properties": {
+        "pmid": "22860188",
+        "doi": "10.1021/cn200111m",
+        "formula": "Delta-log(tau/KA) = log(tau/KA)_pathway1 - log(tau/KA)_pathway2 (normalized to reference agonist)",
+        "relevance": "The pathway-comparison differential is structurally analogous to DeltaS\u2032's genotype comparison, but applied across signaling pathways rather than across genotypes/cohorts",
+        "source": "[Source: PubMed get_article_metadata('22860188')]"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "FRAMEWORK:BLACK_LEFF_OM",
+      "target": "FRAMEWORK:BLACK_LEFF_1985",
+      "type": "EXTENDED_BY",
+      "properties": {"improvement": "Non-hyperbolic E/[A] curve handling"}
+    },
+    {
+      "source": "FRAMEWORK:BLACK_LEFF_OM",
+      "target": "FRAMEWORK:EHLERT_CONSTITUTIVE",
+      "type": "EXTENDED_BY",
+      "properties": {"improvement": "Bidirectional modeling via active/inactive receptor state fractions; handles both agonism and inverse agonism"}
+    },
+    {
+      "source": "FRAMEWORK:BLACK_LEFF_OM",
+      "target": "FRAMEWORK:TRANSDUCTION_COEFFICIENT",
+      "type": "EXTENDED_BY",
+      "properties": {"improvement": "log(tau/KA) combines affinity and efficacy into single receptor-density-independent parameter"}
+    },
+    {
+      "source": "FRAMEWORK:TRANSDUCTION_COEFFICIENT",
+      "target": "FRAMEWORK:COMPLEMENTARY_BIAS_SCALE",
+      "type": "EXTENDED_BY",
+      "properties": {"improvement": "Separated log(tau) efficacy scale for partial agonist profiling"}
+    },
+    {
+      "source": "FRAMEWORK:BLACK_LEFF_OM",
+      "target": "FRAMEWORK:OMA_LIMITATIONS",
+      "type": "CRITIQUED_BY",
+      "properties": {"finding": "tau interdependent on KA and Emax; rigorous fitting procedure proposed"}
+    },
+    {
+      "source": "FRAMEWORK:BLACK_LEFF_OM",
+      "target": "FRAMEWORK:OMA_SLOPE_REEVALUATION",
+      "type": "CRITIQUED_BY",
+      "properties": {"finding": "Exponentiation of tau breaks parameter relationships; Hill-based OMA preferred for variable slope factors"}
+    },
+    {
+      "source": "FRAMEWORK:OMA_SLOPE_REEVALUATION",
+      "target": "METRIC:S_PRIME",
+      "type": "INFORMS_DESIGN",
+      "properties": {"implication": "S\u2032 should be built on Hill-based OMA, not original Black-Leff equation, to handle variable slopes in cancer HTS"}
+    },
+    {
+      "source": "FRAMEWORK:EHLERT_CONSTITUTIVE",
+      "target": "METRIC:S_PRIME",
+      "type": "INFORMS_DESIGN",
+      "properties": {"implication": "epsilon/epsilon_i parameter pair provides the sign-preservation mechanism: active fraction minus inactive fraction yields signed efficacy"}
+    },
+    {
+      "source": "FRAMEWORK:TRANSDUCTION_COEFFICIENT",
+      "target": "METRIC:S_PRIME",
+      "type": "MATHEMATICAL_PRECURSOR",
+      "properties": {"implication": "log(tau/KA) is the unsigned precursor; S\u2032 extends it with sign-preservation for bidirectional responses"}
+    },
+    {
+      "source": "METRIC:S_PRIME",
+      "target": "METRIC:DELTA_S_PRIME",
+      "type": "GENERATES",
+      "properties": {"operation": "DeltaS\u2032 = S\u2032_test - S\u2032_reference"}
+    },
+    {
+      "source": "METRIC:DELTA_LOG_TAU_KA",
+      "target": "METRIC:DELTA_S_PRIME",
+      "type": "STRUCTURAL_ANALOGUE",
+      "properties": {"difference": "Delta-log(tau/KA) compares pathways; DeltaS\u2032 compares genotypes/cohorts"}
+    },
+    {
+      "source": "FRAMEWORK:DSS",
+      "target": "METRIC:DELTA_S_PRIME",
+      "type": "INFORMS_DESIGN",
+      "properties": {"implication": "sDSS cohort normalization concept adapted to sign-preserving framework"}
+    },
+    {
+      "source": "FRAMEWORK:GR_METRICS",
+      "target": "METRIC:S_PRIME",
+      "type": "INFORMS_DESIGN",
+      "properties": {"implication": "Division-rate correction should be incorporated into S\u2032 to avoid confounders in cancer HTS"}
+    },
+    {
+      "source": "FRAMEWORK:NDR",
+      "target": "METRIC:S_PRIME",
+      "type": "INFORMS_DESIGN",
+      "properties": {"implication": "NDR\u2019s bidirectional control normalization provides the readout methodology for extracting signed responses"}
+    },
+    {
+      "source": "FRAMEWORK:HORMESIS",
+      "target": "METRIC:S_PRIME",
+      "type": "INFORMS_DESIGN",
+      "properties": {"implication": "Hormesis DeltaX parameter validates that polarity shifts are quantifiable; S\u2032 generalizes this to the operational model framework"}
+    },
+    {
+      "source": "METRIC:S_PRIME",
+      "target": "METRIC:IC50",
+      "type": "SUPERSEDES",
+      "properties": {"advantage": "IC50 is unsigned and unidirectional; S\u2032 preserves sign and combines potency with efficacy"}
+    },
+    {
+      "source": "METRIC:S_PRIME",
+      "target": "METRIC:EC50",
+      "type": "SUPERSEDES",
+      "properties": {"advantage": "EC50 conflates potency and efficacy; S\u2032 maintains them as decomposable components within a combined index"}
+    },
+    {
+      "source": "METRIC:S_PRIME",
+      "target": "METRIC:AUC",
+      "type": "SUPERSEDES",
+      "properties": {"advantage": "AUC cancels opposing effects and is experiment-dependent; S\u2032 is sign-aware and operationally defined"}
+    },
+    {
+      "source": "METRIC:DELTA_S_PRIME",
+      "target": "PHENOMENON:PARADOXICAL_BRAF",
+      "type": "DESIGNED_TO_DETECT",
+      "properties": {"mechanism": "Sign flip in S\u2032 between BRAF-mutant (positive) and BRAF-WT (negative) genotypes produces large |DeltaS\u2032| flagging genotype-specific vulnerability"}
+    },
+    {
+      "source": "METRIC:S_PRIME",
+      "target": "PHENOMENON:PARADOXICAL_BIDIRECTIONAL",
+      "type": "DESIGNED_TO_DETECT",
+      "properties": {"mechanism": "Sign preservation captures paradoxical and bidirectional drug effects that unsigned metrics miss"}
+    },
+    {
+      "source": "METRIC:IC50",
+      "target": "PHENOMENON:PARADOXICAL_BRAF",
+      "type": "FAILS_TO_DETECT",
+      "properties": {"reason": "IC50 cannot represent paradoxical activation; undefined when drug stimulates rather than inhibits"}
+    },
+    {
+      "source": "FRAMEWORK:BLACK_LEFF_OM",
+      "target": "FRAMEWORK:KENAKIN_GPCR_REVIEW",
+      "type": "REVIEWED_IN",
+      "properties": {}
+    }
+  ],
+  "cq_answer_synthesis": {
+    "verdict": "PARTIALLY_SUPPORTED_WITH_NOVEL_CONTRIBUTION \u2014 The theoretical foundations exist but S\u2032 and \u0394S\u2032 as specific metrics are novel and unpublished",
+    "evidence_mapping": {
+      "emax_and_black_leff_foundation": {
+        "status": "VALIDATED",
+        "by": ["FRAMEWORK:BLACK_LEFF_OM", "FRAMEWORK:BLACK_LEFF_1985", "FRAMEWORK:KENAKIN_GPCR_REVIEW"],
+        "key_finding": "The Black-Leff operational model (1983) provides the theoretical grounding claimed in the CQ: tau (transducer ratio) quantifies efficacy, KA quantifies affinity, and the model is extensible to non-hyperbolic curves (1985 extension). The model is universally accepted as a cornerstone of pharmacological agonism."
+      },
+      "bidirectional_signaling_via_operational_model": {
+        "status": "SUPPORTED",
+        "by": ["FRAMEWORK:EHLERT_CONSTITUTIVE"],
+        "key_finding": "Ehlert et al. (2011) extended the operational model to handle constitutive receptor activity, enabling characterization of both agonism and inverse agonism. Parameters epsilon/epsilon_i for active/inactive receptor fractions provide the mathematical machinery for sign-preserving efficacy representation."
+      },
+      "sign_preserving_index_S_prime": {
+        "status": "NOVEL \u2014 NOT FOUND IN LITERATURE",
+        "by": [],
+        "key_finding": "No published metric named S\u2032 or described as a 'sign-preserving potency-efficacy index' was found across PubMed and web searches. However, the mathematical components exist: log(tau/KA) from Kenakin (2012) provides the combined index; Ehlert (2011) provides the sign-preservation mechanism; Rand\u00e1kov\u00e1 (2023) provides the Hill-based OMA recommendation for variable-slope data. S\u2032 represents a novel synthesis of these elements."
+      },
+      "differential_index_delta_S_prime": {
+        "status": "NOVEL \u2014 NOT FOUND IN LITERATURE",
+        "by": [],
+        "key_finding": "No published differential variant of a sign-preserving operational model index was found. However, the structural analogy is clear: sDSS (Yadav 2014) demonstrates cohort-level differential scoring in cancer drug sensitivity; Delta-log(tau/KA) (Kenakin 2012) demonstrates pathway-level differential scoring in biased agonism. \u0394S\u2032 combines both concepts in a sign-preserving framework."
+      },
+      "genotype_specific_vulnerabilities_via_delta_S_prime": {
+        "status": "SUPPORTED_IN_PRINCIPLE",
+        "by": ["PHENOMENON:PARADOXICAL_BRAF", "FRAMEWORK:DSS", "FRAMEWORK:GR_METRICS"],
+        "key_finding": "Paradoxical BRAF inhibitor activation (vemurafenib activating MAPK in BRAF-WT while inhibiting BRAF-V600E) is a validated example of genotype-specific polarity shift. A sign-preserving differential metric would capture this where IC50 and AUC cannot. sDSS already demonstrates cohort-level differential scoring for genotype-specific vulnerability detection."
+      },
+      "feedback_driven_polarity_shifts": {
+        "status": "SUPPORTED",
+        "by": ["PHENOMENON:PARADOXICAL_BIDIRECTIONAL", "FRAMEWORK:HORMESIS", "FRAMEWORK:NDR"],
+        "key_finding": "Smith et al. (2012) documented mechanisms including feedback response loops, oscillating system disruption, and systemic overcompensation that produce paradoxical and bidirectional drug effects. These are precisely the phenomena that traditional unsigned metrics fail to capture and that S\u2032 is designed to represent."
+      },
+      "traditional_metric_failures": {
+        "status": "VALIDATED",
+        "by": ["FRAMEWORK:GR_METRICS", "FRAMEWORK:NDR", "FRAMEWORK:HORMESIS"],
+        "key_finding": "Confirmed from prior KG: IC50 assumes monotonic inhibition, EC50 conflates potency and efficacy, AUC cancels opposing effects. The operational model framework provides theoretically rigorous alternatives."
+      }
+    }
+  },
+  "validation_verdicts": {
+    "black_leff_1983_foundational": "VALIDATED \u2014 PMID 6141562, widely cited cornerstone",
+    "black_leff_1985_curve_shape": "VALIDATED \u2014 PMID 3978322, PMC1987296",
+    "ehlert_2011_constitutive_extension": "VALIDATED \u2014 PMID 21576379, PMC3141894",
+    "kenakin_2012_transduction_coefficient": "VALIDATED \u2014 PMID 22860188, PMC3369801",
+    "burgueno_2017_complementary_scale": "VALIDATED \u2014 PMID 29133887, PMC5684405",
+    "jakubik_2019_fitting_limitations": "VALIDATED \u2014 PMID 30874590, PMC6420642",
+    "randakova_2023_hill_oma": "VALIDATED \u2014 PMID 37845324, PMC10579308",
+    "kenakin_2016_review": "VALIDATED \u2014 PMID 26856272",
+    "braf_paradoxical_activation": "VALIDATED \u2014 PMID 27476449, PMC4974650",
+    "paradoxical_bidirectional_review": "VALIDATED \u2014 PMID 22272687",
+    "S_prime_as_published_metric": "INVALID \u2014 Not found in published literature",
+    "delta_S_prime_as_published_metric": "INVALID \u2014 Not found in published literature",
+    "S_prime_theoretical_feasibility": "UNVERIFIABLE \u2014 Components exist but integration not empirically validated"
+  }
+}

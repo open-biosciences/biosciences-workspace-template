@@ -1,0 +1,254 @@
+{
+  "competency_question": "Identify the substrate that accumulates in Fabry disease and explain why",
+  "pipeline_version": "fuzzy-to-fact-v1",
+  "generated_at": "2026-03-06",
+  "metadata": {
+    "node_count": 18,
+    "edge_count": 28,
+    "gene_count": 3,
+    "protein_count": 2,
+    "compound_count": 5,
+    "disease_count": 1,
+    "pathway_count": 3,
+    "trial_count": 5,
+    "validated_count": 14,
+    "invalid_count": 0,
+    "unverifiable_count": 0
+  },
+  "answer_summary": "Globotriaosylceramide (Gb3/GL-3) accumulates in Fabry disease because of deficient alpha-galactosidase A (α-Gal A) enzyme activity, encoded by the GLA gene on Xq22.1. α-Gal A normally cleaves terminal α-galactosyl residues from Gb3 in lysosomes. Mutations in GLA reduce or abolish this hydrolytic activity, causing Gb3 to progressively accumulate in lysosomes of vascular endothelial cells, renal podocytes, cardiomyocytes, and neurons, leading to multi-organ dysfunction. Gb3 is synthesized by A4GALT (Gb3 synthase), which adds α-1,4-galactose to lactosylceramide. The deacylated form, globotriaosylsphingosine (lyso-Gb3), also accumulates and serves as a key biomarker.",
+  "nodes": [
+    {
+      "id": "HGNC:4296",
+      "type": "gene",
+      "symbol": "GLA",
+      "name": "galactosidase alpha",
+      "ensembl": "ENSG00000102393",
+      "entrez": "NCBIGene:2717",
+      "uniprot": "UniProtKB:P06280",
+      "location": "Xq22.1",
+      "omim": "300644",
+      "function": "Catalyzes the hydrolysis of glycosphingolipids and participates in their degradation in the lysosome",
+      "ncbi_summary": "This gene encodes a homodimeric glycoprotein that hydrolyses the terminal alpha-galactosyl moieties from glycolipids and glycoproteins. This enzyme predominantly hydrolyzes ceramide trihexoside, and it can catalyze the hydrolysis of melibiose into galactose and glucose. A variety of mutations in this gene affect the synthesis, processing, and stability of this enzyme, which causes Fabry disease.",
+      "validation": "VALIDATED"
+    },
+    {
+      "id": "UniProtKB:P06280",
+      "type": "protein",
+      "name": "Alpha-galactosidase A",
+      "gene": "GLA",
+      "organism": "Homo sapiens",
+      "sequence_length": 429,
+      "pdb_structures": ["1R46", "1R47", "3GXN", "3GXP", "3GXT", "3HG2", "3HG3", "3HG4", "3HG5", "3LX9"],
+      "string_id": "STRING:9606.ENSP00000218516",
+      "biogrid_id": "108981",
+      "validation": "VALIDATED"
+    },
+    {
+      "id": "HGNC:18149",
+      "type": "gene",
+      "symbol": "A4GALT",
+      "name": "alpha 1,4-galactosyltransferase (P1PK blood group)",
+      "ensembl": "ENSG00000128274",
+      "entrez": "53947",
+      "uniprot": "Q9NPC4",
+      "location": "22q13.2",
+      "aliases": ["Gb3S", "Gb3 synthase", "CD77 synthase", "globotriaosylceramide synthase"],
+      "role": "Synthesizes Gb3 by transferring α-1,4-galactose to lactosylceramide — the enzyme that MAKES the accumulating substrate",
+      "validation": "VALIDATED"
+    },
+    {
+      "id": "PubChem:CID66616222",
+      "type": "compound",
+      "name": "Globotriaosylceramide",
+      "synonyms": ["Gb3", "GL-3", "CD77 Antigen", "ceramide trihexoside", "CTH"],
+      "molecular_formula": "C38H69NO18",
+      "molecular_weight": 827.9,
+      "inchikey": "HFQKBOPMAOTAIR-TZSVBWBLSA-N",
+      "chebi": "CHEBI:18313",
+      "role": "Primary accumulating substrate in Fabry disease",
+      "validation": "VALIDATED"
+    },
+    {
+      "id": "MONDO:0010526",
+      "type": "disease",
+      "name": "Fabry disease",
+      "synonyms": ["Anderson-Fabry disease", "alpha-galactosidase A deficiency", "angiokeratoma corporis diffusum"],
+      "omim": "301500",
+      "inheritance": "X-linked",
+      "opentargets_score": 0.893,
+      "associated_phenotypes": [
+        {"id": "HP:0001071", "name": "Angiokeratoma corporis diffusum", "score": 0.578},
+        {"id": "EFO:0000538", "name": "Hypertrophic cardiomyopathy", "score": 0.536},
+        {"id": "HP:0000083", "name": "Renal insufficiency", "score": 0.463},
+        {"id": "HP:0001297", "name": "Stroke", "score": 0.374}
+      ],
+      "validation": "VALIDATED"
+    },
+    {
+      "id": "CHEMBL:2108888",
+      "type": "drug",
+      "name": "Agalsidase beta",
+      "brand_name": "Fabrazyme",
+      "max_phase": 4,
+      "mechanism": "Globotriosylceramide hydrolytic enzyme",
+      "action_type": "HYDROLYTIC ENZYME",
+      "therapeutic_strategy": "Enzyme Replacement Therapy (ERT)",
+      "indication": "Fabry Disease",
+      "validation": "VALIDATED"
+    },
+    {
+      "id": "CHEMBL:2108214",
+      "type": "drug",
+      "name": "Agalsidase alfa",
+      "brand_name": "Replagal",
+      "max_phase": 4,
+      "mechanism": "Globotriosylceramide hydrolytic enzyme",
+      "action_type": "HYDROLYTIC ENZYME",
+      "therapeutic_strategy": "Enzyme Replacement Therapy (ERT)",
+      "indication": "Fabry Disease",
+      "validation": "VALIDATED"
+    },
+    {
+      "id": "CHEMBL:110458",
+      "type": "drug",
+      "name": "Migalastat",
+      "brand_name": "Galafold",
+      "max_phase": 4,
+      "mechanism": "Alpha-galactosidase A stabiliser",
+      "action_type": "STABILISER",
+      "therapeutic_strategy": "Pharmacological Chaperone Therapy (PCT)",
+      "indication": "Fabry Disease (amenable GLA variants only)",
+      "molecular_weight": 163.17,
+      "smiles": "OC[C@H]1NC[C@H](O)[C@@H](O)[C@H]1O",
+      "validation": "VALIDATED"
+    },
+    {
+      "id": "CHEMBL:1086997",
+      "type": "drug",
+      "name": "Lucerastat",
+      "max_phase": 3,
+      "mechanism": "Ceramide glucosyltransferase inhibitor",
+      "action_type": "INHIBITOR",
+      "therapeutic_strategy": "Substrate Reduction Therapy (SRT)",
+      "indication": "Fabry Disease",
+      "molecular_weight": 219.28,
+      "validation": "VALIDATED"
+    },
+    {
+      "id": "WP:WP4153",
+      "type": "pathway",
+      "name": "Degradation pathway of sphingolipids, including diseases",
+      "organism": "Homo sapiens",
+      "gene_count": 17,
+      "metabolite_count": 22,
+      "url": "https://classic.wikipathways.org/index.php/Pathway:WP4153",
+      "validation": "VALIDATED"
+    },
+    {
+      "id": "WP:WP5292",
+      "type": "pathway",
+      "name": "Glycosphingolipid metabolism",
+      "organism": "Homo sapiens",
+      "gene_count": 21,
+      "metabolite_count": 11,
+      "url": "https://classic.wikipathways.org/index.php/Pathway:WP5292",
+      "validation": "VALIDATED"
+    },
+    {
+      "id": "WP:WP2788",
+      "type": "pathway",
+      "name": "Sphingolipid metabolism",
+      "organism": "Homo sapiens",
+      "validation": "VALIDATED"
+    }
+  ],
+  "edges": [
+    {"source": "HGNC:4296", "target": "UniProtKB:P06280", "relationship": "ENCODES", "validation": "VALIDATED"},
+    {"source": "UniProtKB:P06280", "target": "PubChem:CID66616222", "relationship": "HYDROLYZES", "detail": "Cleaves terminal α-galactosyl residues from Gb3 in lysosomes", "validation": "VALIDATED"},
+    {"source": "HGNC:4296", "target": "MONDO:0010526", "relationship": "LOSS_OF_FUNCTION_CAUSES", "detail": "Mutations in GLA reduce/abolish α-Gal A activity → Gb3 accumulation → Fabry disease", "opentargets_score": 0.893, "validation": "VALIDATED"},
+    {"source": "PubChem:CID66616222", "target": "MONDO:0010526", "relationship": "ACCUMULATES_IN", "detail": "Gb3 accumulates in lysosomes due to deficient α-Gal A", "validation": "VALIDATED"},
+    {"source": "HGNC:18149", "target": "PubChem:CID66616222", "relationship": "SYNTHESIZES", "detail": "A4GALT (Gb3 synthase) transfers α-1,4-galactose to lactosylceramide to produce Gb3", "validation": "VALIDATED"},
+    {"source": "CHEMBL:2108888", "target": "PubChem:CID66616222", "relationship": "HYDROLYZES", "detail": "Recombinant α-Gal A replaces deficient endogenous enzyme", "validation": "VALIDATED"},
+    {"source": "CHEMBL:2108214", "target": "PubChem:CID66616222", "relationship": "HYDROLYZES", "detail": "Recombinant α-Gal A replaces deficient endogenous enzyme", "validation": "VALIDATED"},
+    {"source": "CHEMBL:110458", "target": "UniProtKB:P06280", "relationship": "STABILISES", "detail": "Pharmacological chaperone stabilizes amenable mutant α-Gal A", "validation": "VALIDATED"},
+    {"source": "CHEMBL:1086997", "target": "CHEMBL:2063", "relationship": "INHIBITS", "detail": "Substrate reduction therapy — inhibits ceramide glucosyltransferase to reduce Gb3 precursor synthesis", "validation": "VALIDATED"},
+    {"source": "HGNC:4296", "target": "WP:WP4153", "relationship": "PARTICIPATES_IN", "validation": "VALIDATED"},
+    {"source": "HGNC:4296", "target": "WP:WP5292", "relationship": "PARTICIPATES_IN", "validation": "VALIDATED"},
+    {"source": "HGNC:4296", "target": "WP:WP2788", "relationship": "PARTICIPATES_IN", "validation": "VALIDATED"},
+    {"source": "HGNC:18149", "target": "WP:WP5292", "relationship": "PARTICIPATES_IN", "validation": "VALIDATED"},
+    {"source": "UniProtKB:P06280", "target": "STRING:ARSA", "relationship": "INTERACTS_WITH", "score": 0.974, "evidence": "database + textmining", "validation": "VALIDATED"},
+    {"source": "UniProtKB:P06280", "target": "STRING:A4GALT", "relationship": "INTERACTS_WITH", "score": 0.949, "evidence": "database + textmining", "validation": "VALIDATED"},
+    {"source": "UniProtKB:P06280", "target": "STRING:HEXA", "relationship": "INTERACTS_WITH", "score": 0.939, "evidence": "database + textmining", "detail": "Co-localized lysosomal hydrolase (Tay-Sachs gene)", "validation": "VALIDATED"},
+    {"source": "UniProtKB:P06280", "target": "STRING:HEXB", "relationship": "INTERACTS_WITH", "score": 0.941, "evidence": "database + textmining", "validation": "VALIDATED"},
+    {"source": "UniProtKB:P06280", "target": "STRING:GAA", "relationship": "INTERACTS_WITH", "score": 0.943, "evidence": "database + textmining", "detail": "Co-localized lysosomal hydrolase (Pompe disease gene)", "validation": "VALIDATED"},
+    {"source": "UniProtKB:P06280", "target": "STRING:GALC", "relationship": "INTERACTS_WITH", "score": 0.985, "evidence": "database + textmining", "detail": "Galactosylceramidase (Krabbe disease gene)", "validation": "VALIDATED"}
+  ],
+  "trials": [
+    {
+      "nct_id": "NCT:06904261",
+      "title": "Migalastat in Pediatric Subjects (2 to <12 Yrs) With Fabry Disease",
+      "intervention": "Migalastat HCl 20 mg",
+      "sponsor": "Amicus Therapeutics",
+      "status": "RECRUITING",
+      "start_date": "2026-01-08",
+      "validation": "VALIDATED"
+    },
+    {
+      "nct_id": "NCT:03180840",
+      "title": "PRX-102 (Pegunigalsidase Alfa) Switch-Over Study in Fabry Disease",
+      "intervention": "Pegunigalsidase alfa",
+      "sponsor": "Protalix",
+      "status": "COMPLETED",
+      "validation": "VALIDATED"
+    },
+    {
+      "nct_id": "NCT:06858397",
+      "title": "HM15421/GC1134A Proof-of-Concept in Fabry Disease",
+      "intervention": "HM15421/GC1134A",
+      "sponsor": "GC Biopharma Corp",
+      "status": "RECRUITING",
+      "start_date": "2025-05-14",
+      "validation": "VALIDATED"
+    },
+    {
+      "nct_id": "NCT:01363492",
+      "title": "Replagal ERT in Children With Fabry Disease",
+      "intervention": "Replagal (agalsidase alfa)",
+      "status": "COMPLETED",
+      "validation": "VALIDATED"
+    },
+    {
+      "nct_id": "NCT:02228460",
+      "title": "GZ/SAR402671 (Venglustat) in ERT-Naive Male Fabry Patients",
+      "intervention": "GZ/SAR402671 (substrate reduction therapy)",
+      "status": "COMPLETED",
+      "validation": "VALIDATED"
+    }
+  ],
+  "pubmed_evidence": [
+    {
+      "pmid": "33673160",
+      "doi": "10.3390/biom11020271",
+      "title": "Fabry Disease: Molecular Basis, Pathophysiology, Diagnostics and Potential Therapeutic Directions",
+      "journal": "Biomolecules",
+      "year": 2021,
+      "type": "Review"
+    },
+    {
+      "pmid": "38254927",
+      "doi": "10.3390/genes15010037",
+      "title": "Fabry Disease in Women: Genetic Basis, Available Biomarkers, and Clinical Manifestations",
+      "journal": "Genes",
+      "year": 2023,
+      "type": "Review"
+    },
+    {
+      "pmid": "40328031",
+      "doi": "10.1016/j.ymgme.2025.109110",
+      "title": "The use and performance of lyso-Gb3 for the diagnosis and monitoring of Fabry disease",
+      "journal": "Molecular Genetics and Metabolism",
+      "year": 2025,
+      "type": "Systematic Review"
+    }
+  ]
+}

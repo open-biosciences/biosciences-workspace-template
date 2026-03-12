@@ -1,0 +1,218 @@
+{
+  "metadata": {
+    "competency_question": "Identify the substrate that accumulates in Fabry disease and explain why",
+    "pipeline_version": "fuzzy-to-fact-v1",
+    "created": "2026-03-06",
+    "phases_completed": ["ANCHOR", "ENRICH", "EXPAND", "TRAVERSE_DRUGS", "TRAVERSE_TRIALS", "VALIDATE"],
+    "answer_summary": "Globotriaosylceramide (Gb3, also called ceramide trihexoside or GL-3) accumulates in Fabry disease due to deficient or absent alpha-galactosidase A (α-Gal A) enzyme activity, encoded by the GLA gene on Xq22.1. This lysosomal hydrolase normally cleaves the terminal alpha-galactosyl moieties from Gb3 and related glycosphingolipids. Loss-of-function mutations in GLA prevent this catabolic step, causing progressive Gb3 accumulation in lysosomes of vascular endothelium, renal podocytes, cardiomyocytes, and neurons."
+  },
+  "nodes": {
+    "genes": [
+      {
+        "id": "HGNC:4296",
+        "symbol": "GLA",
+        "name": "galactosidase alpha",
+        "ensembl": "ENSG00000102393",
+        "entrez": "NCBIGene:2717",
+        "uniprot": "UniProtKB:P06280",
+        "location": "Xq22.1",
+        "chromosome": "X",
+        "omim": "300644",
+        "biogrid": "108981",
+        "function": "Catalyzes the hydrolysis of glycosphingolipids and participates in their degradation in the lysosome",
+        "summary": "Encodes a homodimeric glycoprotein that hydrolyses the terminal alpha-galactosyl moieties from glycolipids and glycoproteins. Predominantly hydrolyzes ceramide trihexoside. Mutations cause Fabry disease.",
+        "validation": "VALIDATED"
+      }
+    ],
+    "diseases": [
+      {
+        "id": "MONDO:0010526",
+        "name": "Fabry disease",
+        "omim": "301500",
+        "orphanet": "ORPHA:324",
+        "association_score": 0.893,
+        "inheritance": "X-linked",
+        "mechanism": "Loss-of-function mutations in GLA → deficient α-Gal A → Gb3 accumulation",
+        "clinical_features": ["cardiomyopathy", "renal insufficiency", "stroke", "angiokeratoma", "neuropathic pain"],
+        "validation": "VALIDATED"
+      }
+    ],
+    "substrates": [
+      {
+        "name": "Globotriaosylceramide (Gb3)",
+        "aliases": ["ceramide trihexoside", "GL-3", "CTH", "CD77"],
+        "chebi": "CHEBI:134506",
+        "hmdb": "HMDB0004963",
+        "type": "Glycosphingolipid",
+        "structure": "Gal(α1→4)Gal(β1→4)Glc(β1→1')Cer",
+        "accumulation_sites": ["vascular endothelium", "renal podocytes", "cardiomyocytes", "dorsal root ganglia", "cornea"],
+        "biomarker": "Plasma lyso-Gb3 used as disease monitoring biomarker",
+        "validation": "VALIDATED"
+      }
+    ],
+    "drugs": [
+      {
+        "id": "CHEMBL:2108888",
+        "name": "Agalsidase beta",
+        "brand_name": "Fabrazyme",
+        "mechanism": "Globotriosylceramide hydrolytic enzyme (ERT)",
+        "action_type": "HYDROLYTIC ENZYME",
+        "max_phase": 4,
+        "indication": "Fabry Disease",
+        "approach": "Enzyme replacement therapy - recombinant α-Gal A",
+        "validation": "VALIDATED"
+      },
+      {
+        "id": "CHEMBL:2108214",
+        "name": "Agalsidase alfa",
+        "brand_name": "Replagal",
+        "mechanism": "Globotriosylceramide hydrolytic enzyme (ERT)",
+        "action_type": "HYDROLYTIC ENZYME",
+        "max_phase": 4,
+        "indication": "Fabry Disease",
+        "approach": "Enzyme replacement therapy - recombinant α-Gal A",
+        "validation": "VALIDATED"
+      },
+      {
+        "id": "CHEMBL:110458",
+        "name": "Migalastat",
+        "brand_name": "Galafold",
+        "iuphar": "IUPHAR:10200",
+        "mechanism": "Alpha-galactosidase A stabiliser",
+        "action_type": "STABILISER",
+        "max_phase": 4,
+        "indication": "Fabry Disease",
+        "approval": "EMA (2016), FDA (2018)",
+        "smiles": "OC[C@H]1NC[C@H](O)[C@@H](O)[C@H]1O",
+        "synonyms": ["1-Deoxygalactonojirimycin", "Galafold", "GR-181413A"],
+        "approach": "Pharmacological chaperone - stabilizes amenable mutant α-Gal A",
+        "validation": "VALIDATED"
+      },
+      {
+        "id": "CHEMBL:4297801",
+        "name": "Pegunigalsidase alfa",
+        "mechanism": "PEGylated enzyme replacement therapy",
+        "max_phase": 4,
+        "indication": "Fabry Disease",
+        "approach": "Next-generation ERT with longer half-life",
+        "validation": "VALIDATED"
+      },
+      {
+        "id": "CHEMBL:1086997",
+        "name": "Lucerastat",
+        "mechanism": "Substrate reduction therapy",
+        "approach": "Glucosylceramide synthase inhibitor - reduces Gb3 biosynthesis",
+        "validation": "VALIDATED"
+      },
+      {
+        "id": "CHEMBL:5095471",
+        "name": "Voxeralgagene autotemcel",
+        "approach": "Gene therapy (autologous)",
+        "validation": "VALIDATED"
+      }
+    ],
+    "interactors": [
+      {"symbol": "HEXA", "score": 0.939, "context": "Lysosomal glycosidase, Tay-Sachs gene"},
+      {"symbol": "HEXB", "score": 0.941, "context": "Lysosomal glycosidase, Sandhoff gene"},
+      {"symbol": "GAA", "score": 0.943, "context": "Acid alpha-glucosidase, Pompe disease gene"},
+      {"symbol": "ARSA", "score": 0.974, "context": "Arylsulfatase A, metachromatic leukodystrophy"},
+      {"symbol": "NEU1", "score": 0.931, "context": "Neuraminidase 1, sialidosis gene"},
+      {"symbol": "GALC", "score": 0.985, "context": "Galactosylceramidase, Krabbe disease gene"},
+      {"symbol": "GLB1", "score": 0.702, "context": "Beta-galactosidase, GM1 gangliosidosis"},
+      {"symbol": "GAL3ST1", "score": 0.914, "context": "Galactose-3-O-sulfotransferase 1"},
+      {"symbol": "UGT8", "score": 0.924, "context": "UDP glycosyltransferase 8"},
+      {"symbol": "LCT", "score": 0.918, "context": "Lactase"},
+      {"symbol": "GALM", "score": 0.924, "context": "Galactose mutarotase"},
+      {"symbol": "MGAM2", "score": 0.934, "context": "Maltase-glucoamylase 2"}
+    ],
+    "pathways": [
+      {
+        "id": "WP:WP4153",
+        "title": "Degradation pathway of sphingolipids, including diseases",
+        "gene_count": 17,
+        "protein_count": 103,
+        "metabolite_count": 22,
+        "url": "https://classic.wikipathways.org/index.php/Pathway:WP4153"
+      },
+      {
+        "id": "WP:WP5292",
+        "title": "Glycosphingolipid metabolism",
+        "gene_count": 21,
+        "protein_count": 128,
+        "metabolite_count": 11,
+        "url": "https://classic.wikipathways.org/index.php/Pathway:WP5292"
+      },
+      {
+        "id": "WP:WP2788",
+        "title": "Sphingolipid metabolism",
+        "url": "https://classic.wikipathways.org/index.php/Pathway:WP2788"
+      }
+    ],
+    "clinical_trials": [
+      {
+        "id": "NCT:06906367",
+        "title": "Prospective Observational Study of Fabry Disease (US)",
+        "status": "RECRUITING",
+        "sponsor": "Amicus Therapeutics",
+        "interventions": ["migalastat HCl", "ERT"],
+        "primary_outcome": "Annualized rate of change in eGFR",
+        "start_date": "2026-02-13",
+        "validation": "VALIDATED"
+      },
+      {
+        "id": "NCT:05698901",
+        "title": "Biomarkers and Cardiac Imaging for Monitoring Fabry Disease",
+        "status": "RECRUITING",
+        "interventions": ["Agalsidase beta"],
+        "validation": "VALIDATED"
+      },
+      {
+        "id": "NCT:06095713",
+        "title": "German Observational Study - Pegunigalsidase-alfa in Fabry Disease",
+        "status": "RECRUITING",
+        "interventions": ["Pegunigalsidase-alfa"],
+        "validation": "VALIDATED"
+      },
+      {
+        "id": "NCT:06858397",
+        "title": "Proof-of-Concept Study of HM15421/GC1134A in Fabry Disease",
+        "status": "RECRUITING",
+        "interventions": ["HM15421/GC1134A"],
+        "validation": "VALIDATED"
+      },
+      {
+        "id": "NCT:03500094",
+        "title": "Migalastat in Pediatric Subjects (12 to <18 Years)",
+        "status": "COMPLETED",
+        "interventions": ["Migalastat HCl 150 mg"],
+        "validation": "VALIDATED"
+      }
+    ]
+  },
+  "edges": [
+    {"source": "GLA", "target": "Gb3", "relation": "HYDROLYZES", "evidence": "UniProt P06280, NCBI RefSeq"},
+    {"source": "GLA_mutation", "target": "Fabry disease", "relation": "CAUSES", "evidence": "OMIM 301500, Open Targets score 0.893"},
+    {"source": "GLA_deficiency", "target": "Gb3_accumulation", "relation": "RESULTS_IN", "evidence": "WikiPathways WP4153"},
+    {"source": "Agalsidase_beta", "target": "GLA", "relation": "REPLACES", "evidence": "ChEMBL:2108888, mechanism: hydrolytic enzyme"},
+    {"source": "Agalsidase_alfa", "target": "GLA", "relation": "REPLACES", "evidence": "ChEMBL:2108214"},
+    {"source": "Migalastat", "target": "GLA", "relation": "STABILIZES", "evidence": "ChEMBL:110458, IUPHAR:10200"},
+    {"source": "Lucerastat", "target": "Gb3_synthesis", "relation": "INHIBITS", "evidence": "ChEMBL:1086997, substrate reduction therapy"},
+    {"source": "GLA", "target": "HEXA", "relation": "INTERACTS_WITH", "score": 0.939, "evidence": "STRING"},
+    {"source": "GLA", "target": "HEXB", "relation": "INTERACTS_WITH", "score": 0.941, "evidence": "STRING"},
+    {"source": "GLA", "target": "ARSA", "relation": "INTERACTS_WITH", "score": 0.974, "evidence": "STRING"},
+    {"source": "GLA", "target": "GALC", "relation": "INTERACTS_WITH", "score": 0.985, "evidence": "STRING"},
+    {"source": "GLA", "target": "GAA", "relation": "INTERACTS_WITH", "score": 0.943, "evidence": "STRING"}
+  ],
+  "references": [
+    {"pmid": "22465271", "doi": "10.1016/j.clinbiochem.2012.03.015", "title": "Novel mutation in GLA gene in Fabry patients"},
+    {"pmid": "23756194", "doi": "10.1016/j.gene.2013.05.050", "title": "Screening for Fabry disease in dialysis patients"},
+    {"pmid": "8863162", "doi": "10.1136/jmg.33.8.682", "title": "Uneven X inactivation in female MZ twins with Fabry disease"}
+  ],
+  "validation_summary": {
+    "total_entities": 24,
+    "validated": 22,
+    "invalid": 0,
+    "unverifiable": 2,
+    "notes": "NCT:06857397 returned NOT_FOUND (likely typo in source data). PubMed primary server rate-limited; used fallback server for article metadata."
+  }
+}

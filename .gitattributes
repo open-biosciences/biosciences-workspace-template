@@ -1,0 +1,20 @@
+# Line-ending law: every text file is LF in the index AND in the working tree, on
+# every platform. Git for Windows ships core.autocrlf=true system-wide, so without
+# `eol=lf` a Windows clone checks out CRLF while the index holds LF — the split behind
+# the Claude Code Edit-tool CRLF defects (anthropics/claude-code #62713, #13456, #27718)
+# and unreadable run.json diffs between a Windows and a Linux checkout. Every instance
+# created from this template inherits this file.
+* text=auto eol=lf
+
+# Shell scripts and hooks must be LF even on Windows: `#!/bin/sh\r` is not an
+# interpreter any shell will find.
+*.sh        text eol=lf
+.githooks/* text eol=lf
+
+# Binaries: never normalize.
+*.docx binary
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.pdf  binary
+*.zip  binary
